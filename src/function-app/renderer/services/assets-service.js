@@ -6,14 +6,15 @@ var assets = function() {
 };
 
 assets.prototype.addJQuery = function() {
-	this.js.push('jQuery js');
+	this.js.push('/assets/jquery/jquery-3.1.1.min.js');
 	return this;
 };
 
 assets.prototype.addBootstrap = function() {
 	this.addJQuery();
-	this.css.push('bootstrap css');
-	this.js.push('bootstrap js');
+	this.css.push('/assets/bootstrap/css/bootstrap.min.css');
+	this.css.push('/assets/bootstrap/css/bootstrap-theme.min.css');
+	this.js.push('/assets/bootstrap/js/bootstrap.min.js');
 	return this;
 };
 

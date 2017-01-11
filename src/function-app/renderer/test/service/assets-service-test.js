@@ -27,7 +27,7 @@ describe('service', function() {
 			assets.css.should.be.an.Array;
 			assets.js.should.be.an.Array;
 
-			assets.css.should.have.lengthOf(1);
+			assets.css.should.have.lengthOf(2);
 			assets.js.should.have.lengthOf(2);
 		});
 
@@ -51,7 +51,7 @@ describe('service', function() {
 			assets2.css.should.be.an.Array;
 			assets2.js.should.be.an.Array;
 
-			assets2.css.should.have.lengthOf(1);
+			assets2.css.should.have.lengthOf(2);
 			assets2.js.should.have.lengthOf(2);
 		});
 
@@ -68,7 +68,7 @@ describe('service', function() {
 			assets.js.should.have.lengthOf(1);
 		});
 
-		it('bootstrap - jquery + 1 js, 1 css', function() {
+		it('bootstrap - jquery + 1 js, 2 css', function() {
 			var assets = assetsService
 				.create()
 				.addBootstrap()
@@ -77,7 +77,7 @@ describe('service', function() {
 			assets.css.should.be.an.Array;
 			assets.js.should.be.an.Array;
 
-			assets.css.should.have.lengthOf(1);
+			assets.css.should.have.lengthOf(2);
 			assets.js.should.have.lengthOf(2);
 		});
 	});
