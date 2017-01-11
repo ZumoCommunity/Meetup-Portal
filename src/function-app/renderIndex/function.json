@@ -1,0 +1,17 @@
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "name": "queueItem",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "renderIndex",
+      "connection": "Storage"
+    },
+    {
+      "name": "response",
+      "type": "http",
+      "direction": "out"
+    }
+  ]
+}
