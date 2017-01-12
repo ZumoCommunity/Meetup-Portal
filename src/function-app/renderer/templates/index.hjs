@@ -15,5 +15,13 @@
 	</head>
 	<body>
 		<h1>Hello world!</h1>
+		<div>
+			Our partners
+		</div>
+		<ul>
+			<li>Partner 1</li>
+			<li>Partner 2</li>
+			<li>Partner 3</li>
+		</ul>
 	</body>
 </html>

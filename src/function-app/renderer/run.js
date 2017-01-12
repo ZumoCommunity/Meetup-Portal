@@ -1,17 +1,20 @@
 var templatesService = require('./services/templates-service');
+var helpersService = require('./services/helpers-service');
 
 var service = {};
 
 module.exports = function (context, queueItem) {
-	context.log('queue item: ', queueItem);
-
-	context.log('page: ', queueItem.page);
-
 	templatesService
 		.render(queueItem.page, queueItem.arguments)
-		.then(function(html) {
-			console.log(html);
-			context.done();
+		.then(function(result) {
+			helpersService
+				.saveHtml(result.name, result.html)
+				.then(function() {
+					context.done();
+				}, function (err) {
+					console.log(err);
+					context.done();
+				});
 		}, function(err) {
 			console.log(err);
 			context.done();

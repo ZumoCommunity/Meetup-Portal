@@ -31,7 +31,7 @@ service.render = function() {
 
 			var html = Mustache.render(template, model);
 
-			return Promise.resolve(html);
+			return Promise.resolve({ name: 'index', html: html });
 		}, function (err) {
 			return Promise.reject(err);
 		});
