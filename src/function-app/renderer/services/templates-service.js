@@ -39,9 +39,9 @@ service.render = function(page, arguments) {
 	}
 
 	return renderPromise
-		.then(function (html) {
-			var minifiedHtml = getMinifiedHtml(html);
-			return Promise.resolve(minifiedHtml);
+		.then(function (result) {
+			var minifiedHtml = getMinifiedHtml(result.html);
+			return Promise.resolve({ name: result.name, html: minifiedHtml });
 		}, function (err) {
 			return Promise.reject(err);
 		});

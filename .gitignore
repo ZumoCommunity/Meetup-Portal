@@ -41,3 +41,5 @@ jspm_packages
 
 #Development environment configuration
 appconfig.json
+
+src/web-app/*.html
