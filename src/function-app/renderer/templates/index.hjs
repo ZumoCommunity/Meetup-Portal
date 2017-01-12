@@ -13,15 +13,124 @@
 			<script src="{{{ . }}}"></script>
 		{{/assets.js}}
 	</head>
-	<body>
-		<h1>Hello world!</h1>
-		<div>
-			Our partners
+	<body class="container-fluid">
+
+		<div class="jumbotron">
+			<h1>{{ page.title }}</h1>
+			<p>
+				This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+			</p>
 		</div>
-		<ul>
-			<li>Partner 1</li>
-			<li>Partner 2</li>
-			<li>Partner 3</li>
-		</ul>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading text-center">Join us</div>
+					<div class="panel-body">
+
+						<div class="col-md-6">
+							{{#page.socials}}
+								<a href="{{ url }}" class="btn btn-default" target="_blank">{{ name }}</a>
+							{{/page.socials}}
+						</div>
+
+						<div class="col-md-6">
+							<form class="form-inline">
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon">Email</div>
+										<input type="email" class="form-control" id="tbEmail" placeholder="Email">
+									</div>
+								</div>
+								<button type="submit" class="btn btn-default">Subscribe to news</button>
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<!-- partners -->
+			<div class="col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-heading">Our partners</div>
+					<div class="panel-body">
+						<p>Why we love our partners?</p>
+						<p>How to become a partner?</p>
+					</div>
+					<ul class="list-group">
+						{{#page.partners}}
+							<li class="list-group-item"><a href="{{ webUrl }}" target="_blank">{{ name }}</a></li>
+						{{/page.partners}}
+					</ul>
+					<!--<div class="panel-footer"><a href="#">See all partners</a></div>-->
+				</div>
+			</div>
+
+			<!-- meetups -->
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">Upcoming events</div>
+					<div class="panel-body">
+						<p>How to register to our events?</p>
+						<p>How to ask us to host event in your location?</p>
+					</div>
+					<ul class="list-group">
+						{{#page.events}}
+							<li class="list-group-item"><a href="{{ url }}" target="_blank">{{ date }}</a></li>
+						{{/page.events}}
+					</ul>
+					<div class="panel-footer"><a href="#">See all events</a></div>
+				</div>
+			</div>
+
+			<!-- speakers -->
+			<div class="col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-heading">Latest speakers</div>
+					<div class="panel-body">
+						<p>Our speakers are the best of the best.</p>
+						<p>How to become a speaker?</p>
+					</div>
+					<ul class="list-group">
+						{{#page.speakers}}
+							<li class="list-group-item">
+								<div class="media">
+									<div class="media-left">
+										<a href="#">
+											<img class="media-object img-circle" style="max-height: 64px; max-width: 64px;" src="https://pbs.twimg.com/profile_images/3722654974/718e0411759c762708edf6c2fa25065c_400x400.jpeg" alt="">
+										</a>
+									</div>
+									<div class="media-body">
+										<h4><a href="{{ profileUrl }}" target="_blank">{{ name }}</a></h4>
+										<div>
+											<a href="#"><i class="fa fa-2x fa-facebook-square" aria-hidden="true">&nbsp;</i></a>
+											<a href="#"><i class="fa fa-2x fa-twitter-square" aria-hidden="true">&nbsp;</i></a>
+											<a href="#"><i class="fa fa-2x fa-youtube-square" aria-hidden="true">&nbsp;</i></a>
+											<a href="#"><i class="fa fa-2x fa-github-square" aria-hidden="true">&nbsp;</i></a>
+										</div>
+									</div>
+								</div>
+							</li>
+						{{/page.speakers}}
+					</ul>
+					<div class="panel-footer"><a href="#">See all speakers</a></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading text-center">About us</div>
+					<div class="panel-body">
+						<p>Our community is the best.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</body>
 </html>
