@@ -18,6 +18,11 @@ assets.prototype.addBootstrap = function() {
 	return this;
 };
 
+assets.prototype.addFontAwesome = function() {
+	this.css.push('/assets/font-awesome/css/font-awesome.min.css');
+	return this;
+};
+
 assets.prototype.render = function() {
 	return {
 		css: _.uniq(this.css),

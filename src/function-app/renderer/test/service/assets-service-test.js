@@ -80,5 +80,18 @@ describe('service', function() {
 			assets.css.should.have.lengthOf(2);
 			assets.js.should.have.lengthOf(2);
 		});
+
+		it('font-awesome - 0 js, 1 css', function() {
+			var assets = assetsService
+				.create()
+				.addFontAwesome()
+				.render();
+
+			assets.css.should.be.an.Array;
+			assets.js.should.be.an.Array;
+
+			assets.css.should.have.lengthOf(1);
+			assets.js.should.have.lengthOf(0);
+		});
 	});
 });
