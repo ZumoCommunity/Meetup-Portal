@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ page.title }}</title>
+
+		<!-- css -->
+		{{#assets.css}}
+			<link href="{{{ . }}}" rel="stylesheet" type="text/css">
+		{{/assets.css}}
+
+		<!-- js -->
+		{{#assets.js}}
+			<script src="{{{ . }}}"></script>
+		{{/assets.js}}
+	</head>
+	<body>
+		<h1>Hello world!</h1>
+	</body>
+</html>
