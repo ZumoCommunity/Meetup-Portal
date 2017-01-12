@@ -3,9 +3,11 @@
   "version": "0.0.1",
   "main": "renderer.js",
   "dependencies": {
+    "html-minifier": "^3.2.3",
     "lodash": "^4.17.4",
     "mustache": "^2.3.0",
-    "nconf": "^0.8.4"
+    "nconf": "^0.8.4",
+    "promise": "^7.1.1"
   },
   "devDependencies": {
     "mocha": "^3.2.0",
