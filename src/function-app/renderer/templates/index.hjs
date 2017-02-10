@@ -3,17 +3,11 @@
 	<head>
 		<title>Microsoft Azure Ukraine User Group</title>
 
-		<!-- css -->
-		{{#assets.css}}
-			<link href="{{{ . }}}" rel="stylesheet" type="text/css">
-		{{/assets.css}}
-
-		<!-- js -->
-		{{#assets.js}}
-			<script src="{{{ . }}}"></script>
-		{{/assets.js}}
+		{{> sectionHead}}
 	</head>
 	<body class="container-fluid">
+
+		{{> sectionHeader}}
 
 		<div class="jumbotron">
 			<h1>{{ page.title }}</h1>
@@ -121,16 +115,7 @@
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col-md-12">
-				<div class="panel panel-default">
-					<div class="panel-heading text-center">О нас</div>
-					<div class="panel-body">
-						<p>Вместе мы знаем и умеем намного больше, чем каждый из нас в отдельности.</p>
-					</div>
-				</div>
-			</div>
-		</div>
+		{{> sectionFooter}}
 
 	</body>
 </html>
