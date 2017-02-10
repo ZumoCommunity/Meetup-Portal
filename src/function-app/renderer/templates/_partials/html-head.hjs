@@ -1,0 +1,9 @@
+<!-- css -->
+{{#assets.css}}
+    <link href="{{{ . }}}" rel="stylesheet" type="text/css">
+{{/assets.css}}
+
+<!-- js -->
+{{#assets.js}}
+    <script src="{{{ . }}}"></script>
+{{/assets.js}}
