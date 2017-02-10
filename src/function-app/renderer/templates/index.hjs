@@ -6,7 +6,6 @@
 		{{> sectionHead}}
 	</head>
 	<body class="container-fluid">
-
 		{{> sectionHeader}}
 
 		<div class="jumbotron">
@@ -116,6 +115,5 @@
 		</div>
 
 		{{> sectionFooter}}
-
 	</body>
 </html>
