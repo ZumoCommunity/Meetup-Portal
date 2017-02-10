@@ -1,8 +1,6 @@
 var templatesService = require('./services/templates-service');
 var helpersService = require('./services/helpers-service');
 
-var service = {};
-
 module.exports = function (context, queueItem) {
 	templatesService
 		.render(queueItem.page, queueItem.arguments)
