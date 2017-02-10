@@ -7,7 +7,7 @@ var Promise = require('promise');
 var service = {};
 
 var meetupRegistrationFormId = '898112fa-5aa1-4c25-8f42-ffae4cc8712b';
-var defaultLanguage = 'en-US';
+var defaultLanguage = 'ru-RU';
 
 service.getMeetupRegistrationFormHtml = function(meetupId) {
 	return new Promise(function(resolve, reject) {

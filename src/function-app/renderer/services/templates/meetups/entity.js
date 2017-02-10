@@ -5,33 +5,42 @@ var assetsService = require('./../../assets-service');
 var helpersService = require('./../../helpers-service');
 var dataService = require('./../../data-service');
 var appService = require('./../../app-service');
+var partialsService = require('./../_partials');
 
 var service = {};
 
 service.render = function(meetupId) {
+	var assets = assetsService
+		.create()
+		.addBootstrap()
+		.addFontAwesome()
+		.addKnockout()
+		.render();
+
 	var promises = [];
 
 	promises.push(helpersService.readLocalFile('templates/meetups/entity.hjs'));
 	promises.push(dataService.getTableReference(dataService.tableNames.meetups).expand('Location').find(meetupId).get());
 	promises.push(appService.getMeetupRegistrationFormHtml(meetupId));
+	promises.push(partialsService.renderHead(assets));
+	promises.push(partialsService.renderHeader());
+	promises.push(partialsService.renderFooter());
 
 	return Promise
 		.all(promises)
 		.then(function(results){
 			var template = results[0];
 
+			var partials = {
+				sectionHead: results[3],
+				sectionHeader: results[4],
+				sectionFooter: results[5]
+			};
+
 			var meetup = results[1].data;
 			delete meetup['@odata.context'];
 
 			var registrationFormHtml = results[2];
-
-			var assets = assetsService
-				.create()
-				.addJQuery()
-				.addBootstrap()
-				.addFontAwesome()
-				.addKnockout()
-				.render();
 
 			var model = {
 				page: {
@@ -39,11 +48,10 @@ service.render = function(meetupId) {
 					form: {
 						registration: registrationFormHtml
 					}
-				},
-				assets: assets
+				}
 			};
 
-			var html = Mustache.render(template, model);
+			var html = Mustache.render(template, model, partials);
 
 			return Promise.resolve({ name: 'meetup-' + meetupId, html: html });
 		}, function (err) {

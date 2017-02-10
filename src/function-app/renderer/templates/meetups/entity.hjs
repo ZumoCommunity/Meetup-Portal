@@ -3,17 +3,11 @@
 	<head>
 		<title>Microsoft Azure Ukraine User Group - {{ page.meetup.Title }}</title>
 
-		<!-- css -->
-		{{#assets.css}}
-			<link href="{{{ . }}}" rel="stylesheet" type="text/css">
-		{{/assets.css}}
-
-		<!-- js -->
-		{{#assets.js}}
-			<script src="{{{ . }}}"></script>
-		{{/assets.js}}
+		{{> sectionHead}}
 	</head>
 	<body class="container-fluid">
+		{{> sectionHeader}}
+
 		<div class="jumbotron">
 			<h1>{{ page.meetup.Title }}</h1>
 			<p>
@@ -23,5 +17,7 @@
 		<div class="jumbotron">
 			{{{ page.form.registration }}}
 		</div>
+
+		{{> sectionFooter}}
 	</body>
 </html>
