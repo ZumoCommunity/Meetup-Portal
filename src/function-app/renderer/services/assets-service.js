@@ -23,6 +23,11 @@ assets.prototype.addFontAwesome = function() {
 	return this;
 };
 
+assets.prototype.addKnockout = function() {
+    this.js.push('/assets/knockout/knockout-3.4.1.js');
+    return this;
+};
+
 assets.prototype.render = function() {
 	return {
 		css: _.uniq(this.css),
