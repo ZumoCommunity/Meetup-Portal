@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>{{ page.title }}</title>
+		<title>Microsoft Azure Ukraine User Group - {{ page.meetup.Title }}</title>
 
 		<!-- css -->
 		{{#assets.css}}
@@ -17,7 +17,7 @@
 		<div class="jumbotron">
 			<h1>{{ page.meetup.Title }}</h1>
 			<p>
-				This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+				{{ page.meetup.Location.Address }}
 			</p>
 		</div>
 		<div class="jumbotron">

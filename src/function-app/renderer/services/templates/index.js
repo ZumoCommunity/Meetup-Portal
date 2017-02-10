@@ -53,7 +53,6 @@ service.render = function() {
 
 			var model = {
 				page: {
-					title: 'Microsoft Azure Ukraine User Group',
 					partners: partners,
 					events: events,
 					speakers: speakers,

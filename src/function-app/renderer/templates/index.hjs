@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>{{ page.title }}</title>
+		<title>Microsoft Azure Ukraine User Group</title>
 
 		<!-- css -->
 		{{#assets.css}}
@@ -18,14 +18,14 @@
 		<div class="jumbotron">
 			<h1>{{ page.title }}</h1>
 			<p>
-				This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+				Сообщество архитекторов и разработчиков приложений на базе Microsoft Azure.
 			</p>
 		</div>
 
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-default">
-					<div class="panel-heading text-center">Join us</div>
+					<div class="panel-heading text-center">Присоединяйтесь к нам</div>
 					<div class="panel-body">
 
 						<div class="col-md-6">
@@ -55,44 +55,44 @@
 			<!-- partners -->
 			<div class="col-md-3">
 				<div class="panel panel-default">
-					<div class="panel-heading">Our partners</div>
+					<div class="panel-heading">Наши любимые партнеры</div>
 					<div class="panel-body">
-						<p>Why we love our partners?</p>
-						<p>How to become a partner?</p>
+						<p>Кто такие наши партнеры?</p>
+						<p>Как стать партнером?</p>
 					</div>
 					<ul class="list-group">
 						{{#page.partners}}
 							<li class="list-group-item"><a href="{{ webUrl }}" target="_blank">{{ name }}</a></li>
 						{{/page.partners}}
 					</ul>
-					<!--<div class="panel-footer"><a href="#">See all partners</a></div>-->
+					<div class="panel-footer"><a href="#">Все наши партнеры</a></div>
 				</div>
 			</div>
 
 			<!-- meetups -->
 			<div class="col-md-6">
 				<div class="panel panel-default">
-					<div class="panel-heading">Upcoming events</div>
+					<div class="panel-heading">Ближайшие события</div>
 					<div class="panel-body">
-						<p>How to register to our events?</p>
-						<p>How to ask us to host event in your location?</p>
+						<p>Как зарегистрироваться на событие?</p>
+						<p>Как провести событие у вас на локации?</p>
 					</div>
 					<ul class="list-group">
 						{{#page.events}}
 							<li class="list-group-item"><a href="{{ url }}" target="_blank">{{ date }}</a></li>
 						{{/page.events}}
 					</ul>
-					<div class="panel-footer"><a href="#">See all events</a></div>
+					<div class="panel-footer"><a href="#">Все наши события</a></div>
 				</div>
 			</div>
 
 			<!-- speakers -->
 			<div class="col-md-3">
 				<div class="panel panel-default">
-					<div class="panel-heading">Latest speakers</div>
+					<div class="panel-heading">Ближайшие докладчики</div>
 					<div class="panel-body">
-						<p>Our speakers are the best of the best.</p>
-						<p>How to become a speaker?</p>
+						<p>Кто такие наши докладчики?</p>
+						<p>Как стать докладчиком?</p>
 					</div>
 					<ul class="list-group">
 						{{#page.speakers}}
@@ -116,7 +116,7 @@
 							</li>
 						{{/page.speakers}}
 					</ul>
-					<div class="panel-footer"><a href="#">See all speakers</a></div>
+					<div class="panel-footer"><a href="#">Все наши докладчики</a></div>
 				</div>
 			</div>
 		</div>
@@ -124,9 +124,9 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-default">
-					<div class="panel-heading text-center">About us</div>
+					<div class="panel-heading text-center">О нас</div>
 					<div class="panel-body">
-						<p>Our community is the best.</p>
+						<p>Вместе мы знаем и умеем намного больше, чем каждый из нас в отдельности.</p>
 					</div>
 				</div>
 			</div>

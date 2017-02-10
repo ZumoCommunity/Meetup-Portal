@@ -12,7 +12,7 @@ service.render = function(meetupId) {
 	var promises = [];
 
 	promises.push(helpersService.readLocalFile('templates/meetups/entity.hjs'));
-	promises.push(dataService.getTableReference(dataService.tableNames.meetups).find(meetupId).get());
+	promises.push(dataService.getTableReference(dataService.tableNames.meetups).expand('Location').find(meetupId).get());
 	promises.push(appService.getMeetupRegistrationFormHtml(meetupId));
 
 	return Promise
@@ -30,11 +30,11 @@ service.render = function(meetupId) {
 				.addJQuery()
 				.addBootstrap()
 				.addFontAwesome()
+				.addKnockout()
 				.render();
 
 			var model = {
 				page: {
-					title: 'Microsoft Azure Ukraine User Group - ' + meetup.Title,
 					meetup: meetup,
 					form: {
 						registration: registrationFormHtml
