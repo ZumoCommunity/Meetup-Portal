@@ -1,7 +1,7 @@
 var Mustache = require('mustache');
 var Promise = require('promise');
 
-var assetsService = require('./../../services/assets-service');
+var assetsService = require('./../assets-service');
 var helpersService = require('./../helpers-service');
 
 var service = {};

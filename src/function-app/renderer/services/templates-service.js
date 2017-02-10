@@ -35,7 +35,7 @@ service.render = function(page, arguments) {
 			renderPromise = templates.meetups.entity.render(arguments.meetupId);
 			break;
 		default:
-			throw new Error('Page type is not supported.');
+			throw new Error('Page type "' + page + '" is not supported.');
 	}
 
 	return renderPromise

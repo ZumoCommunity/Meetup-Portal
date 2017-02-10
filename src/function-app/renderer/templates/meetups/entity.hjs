@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ page.title }}</title>
+
+		<!-- css -->
+		{{#assets.css}}
+			<link href="{{{ . }}}" rel="stylesheet" type="text/css">
+		{{/assets.css}}
+
+		<!-- js -->
+		{{#assets.js}}
+			<script src="{{{ . }}}"></script>
+		{{/assets.js}}
+	</head>
+	<body class="container-fluid">
+		<div class="jumbotron">
+			<h1>{{ page.meetup.Title }}</h1>
+			<p>
+				This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+			</p>
+		</div>
+		<div class="jumbotron">
+			{{{ page.form.registration }}}
+		</div>
+	</body>
+</html>
