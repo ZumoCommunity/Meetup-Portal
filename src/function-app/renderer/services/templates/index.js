@@ -54,10 +54,10 @@ service.render = function() {
 			];
 
 			var socials = [
-				{ name: 'Facebook', url: '' },
-				{ name: 'Twitter', url: '' },
-				{ name: 'Google+', url: '' },
-				{ name: 'YouTube', url: '' }
+				{ name: 'Facebook', url: '', fa: 'fa-facebook-official' },
+				{ name: 'Twitter', url: '', fa: 'fa-twitter-square' },
+				{ name: 'Google+', url: '', fa: 'fa-google-plus-square' },
+				{ name: 'YouTube', url: '', fa: 'fa-youtube-square' }
 			];
 
 			var model = {
