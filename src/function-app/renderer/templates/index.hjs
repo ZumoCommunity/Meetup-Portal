@@ -78,16 +78,17 @@
 						</div>
 
 						<ul class="list-group">
-							{{#page.events}}
+							{{#page.upcomingMeetups}}
 								<li class="list-group-item">
-									<a href="{{ url }}" target="_blank" class="linkGray">
-										{{ date }}
+									<a href="/meetup-{{ Id }}.html" class="linkGray">
+										<span class="label label-default">{{ DateFormatted }}</span>
+										{{ Title }}
 									</a>
 								</li>
-							{{/page.events}}
+							{{/page.upcomingMeetups}}
 						</ul>
 						<div class="panel-footer bg-warning">
-							<a href="#" class="linkGray">
+							<a href="/meetups-list.html" class="linkGray">
 								Все наши события
 							</a>
 						</div>

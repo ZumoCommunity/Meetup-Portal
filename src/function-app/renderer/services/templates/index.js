@@ -4,6 +4,8 @@ var Promise = require('promise');
 var assetsService = require('./../assets-service');
 var helpersService = require('./../helpers-service');
 var partialsService = require('./_partials');
+var dataService = require('./../data-service');
+var translationService = require('./../translation-service');
 
 var service = {};
 
@@ -20,6 +22,7 @@ service.render = function() {
 	promises.push(partialsService.renderHead(assets));
 	promises.push(partialsService.renderHeader());
 	promises.push(partialsService.renderFooter());
+	promises.push( dataService.getTableReference(dataService.tableNames.meetups).orderBy('DateTimeBegin').filter('DateTimeBegin ge ' + (new Date()).toISOString()).get());
 
 	return Promise
 		.all(promises)
@@ -40,11 +43,14 @@ service.render = function() {
 				{ name: 'GlobalLogic', webUrl: '' }
 			];
 
-			var events = [
-				{ date: '2017-02-21', url: '' },
-				{ date: '2017-03-14', url: '' },
-				{ date: '2017-04-04', url: '' }
-			];
+			var upcomingMeetups = results[4].data.map(function(meetup) {
+				var date = new Date(meetup.DateTimeBegin);
+				meetup.DateFormatted = date.getDay() + ' '
+					+ translationService.getMonthName(date.getMonth()) + ' '
+					+ date.getFullYear();
+
+				return meetup;
+			});
 
 			var speakers = [
 				{ name: 'Anton Boyko', profileUrl: '' },
@@ -63,7 +69,7 @@ service.render = function() {
 			var model = {
 				page: {
 					partners: partners,
-					events: events,
+					upcomingMeetups: upcomingMeetups,
 					speakers: speakers,
 					socials: socials
 				}
