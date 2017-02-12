@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Microsoft Azure Ukraine User Group - {{ page.meetup.Title }}</title>
+
+	{{> sectionHead}}
+</head>
+<body>
+	{{> sectionHeader}}
+
+	<div id="years">
+		<ul>
+			{{#page.years}}
+				<li><a href="#year{{ year }}">{{ year }}</a></li>
+			{{/page.years}}
+		</ul>
+		{{#page.years}}
+			<div id="year{{ year }}">
+				{{#meetups}}
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<a href="/meetup-{{ Id }}.html"><h3 class="panel-title">{{ Title }}</h3></a>
+						</div>
+						<div class="panel-body">
+							Panel content
+						</div>
+					</div>
+				{{/meetups}}
+			</div>
+		{{/page.years}}
+	</div>
+
+	{{> sectionFooter}}
+
+	<script>
+		$(document).ready(function() {
+			$("#years").tabs();
+		});
+	</script>
+</body>
+</html>

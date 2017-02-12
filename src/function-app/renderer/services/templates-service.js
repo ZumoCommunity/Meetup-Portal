@@ -29,7 +29,7 @@ service.render = function(page, arguments) {
 			renderPromise = templates.index.render();
 			break;
 		case 'meetups-list':
-			renderPromise = templates.meetups.list.render(arguments.year);
+			renderPromise = templates.meetups.list.render();
 			break;
 		case 'meetup-entity':
 			renderPromise = templates.meetups.entity.render(arguments.meetupId);

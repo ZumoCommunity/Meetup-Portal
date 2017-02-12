@@ -16,7 +16,7 @@ Listener function should know the web site structure and know how each entity ty
 
 #### List of supported internal tasks
 - { page: 'index' }
-- { page: 'meetups-list', arguments: { year: &lt;int&gt; } }
+- { page: 'meetups-list' }
 - { page: 'meetup-entity', arguments: { meetupId: '&lt;uuid&gt;' } }
 
 ## Renderer function
