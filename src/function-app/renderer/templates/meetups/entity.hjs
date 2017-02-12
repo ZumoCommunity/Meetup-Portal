@@ -5,7 +5,7 @@
 
 		{{> sectionHead}}
 	</head>
-	<body class="container-fluid">
+	<body>
 		{{> sectionHeader}}
 
 		<div class="jumbotron">
