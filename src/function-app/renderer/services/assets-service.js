@@ -10,6 +10,14 @@ assets.prototype.addJQuery = function() {
 	return this;
 };
 
+assets.prototype.addJQueryUI = function() {
+	this.addJQuery();
+	this.css.push('/assets/jquery-ui/jquery-ui.min.css');
+	this.css.push('/assets/jquery-ui/jquery-ui.structure.min.css');
+	this.js.push('/assets/jquery-ui/jquery-ui.min.js');
+	return this;
+};
+
 assets.prototype.addBootstrap = function() {
 	this.addJQuery();
 	this.css.push('/assets/bootstrap/css/bootstrap.min.css');
