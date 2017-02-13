@@ -8,7 +8,7 @@ var partialsService = require('./../_partials');
 
 var service = {};
 
-service.render = function(name) {
+service.render = function() {
 	var assets = assetsService
 		.create()
 		.addBootstrap()
