@@ -183,12 +183,12 @@
 
 						<div class="panel-body">
 							<div>
-								<a href="#" class="linkGray">
+								<a href="/partners.html#who-are-our-partners" class="linkGray">
 									<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Кто такие наши партнеры?
 								</a>
 							</div>
 							<div>
-								<a href="#" class="linkGray">
+								<a href="/partners.html#how-to-become-a-partner" class="linkGray">
 									<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Как стать партнером?
 								</a>
 							</div>
