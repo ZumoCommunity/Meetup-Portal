@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Microsoft Azure Ukraine User Group - наши докладчики</title>
+
+		{{> sectionHead}}
+	</head>
+	<body>
+		{{> sectionHeader}}
+
+		<div id="who-are-our-speakers" class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<h2>
+						<i class="fa fa-address-book" aria-hidden="true"></i> Кто такие наши докладчики
+					</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="container-fluid">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec libero gravida, efficitur ligula vitae, mattis nisl. Maecenas vehicula at erat et tristique. Duis vestibulum, velit at molestie sagittis, leo leo euismod ante, sit amet ultricies tellus velit nec est. Maecenas at erat volutpat, vulputate nibh ut, bibendum est. Ut semper, arcu a rutrum tincidunt, arcu nunc gravida orci, ut maximus dolor nulla at orci. Integer euismod est nec malesuada ullamcorper. Duis cursus turpis augue, sit amet feugiat neque pulvinar blandit. Donec in pellentesque odio, nec suscipit ligula. Cras ultrices ullamcorper malesuada. Nunc ornare, nisi non bibendum aliquet, purus sapien rhoncus odio, vitae finibus ex elit a elit. Morbi malesuada accumsan nisl a pulvinar. Vivamus in tortor nunc. Integer malesuada sit amet lectus id porttitor. Integer erat justo, dapibus id dui in, ornare placerat urna.
+				</div>
+			</div>
+		</div>
+
+		<div id="how-to-become-a-speaker" class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<h2>
+						<i class="fa fa-address-book" aria-hidden="true"></i> Как стать докладчиком
+					</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="container-fluid">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec libero gravida, efficitur ligula vitae, mattis nisl. Maecenas vehicula at erat et tristique. Duis vestibulum, velit at molestie sagittis, leo leo euismod ante, sit amet ultricies tellus velit nec est. Maecenas at erat volutpat, vulputate nibh ut, bibendum est. Ut semper, arcu a rutrum tincidunt, arcu nunc gravida orci, ut maximus dolor nulla at orci. Integer euismod est nec malesuada ullamcorper. Duis cursus turpis augue, sit amet feugiat neque pulvinar blandit. Donec in pellentesque odio, nec suscipit ligula. Cras ultrices ullamcorper malesuada. Nunc ornare, nisi non bibendum aliquet, purus sapien rhoncus odio, vitae finibus ex elit a elit. Morbi malesuada accumsan nisl a pulvinar. Vivamus in tortor nunc. Integer malesuada sit amet lectus id porttitor. Integer erat justo, dapibus id dui in, ornare placerat urna.
+				</div>
+			</div>
+		</div>
+
+		<div class="container spacingForBlocks">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<h2>
+						<i class="fa fa-address-book" aria-hidden="true"></i> Наши докладчики
+					</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="container-fluid">
+					{{#page.speakers}}
+						<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 text-center" style="margin-bottom: 15px;">
+							<!--<a href="#">-->
+								<img class="img-circle img-responsive" style="max-height: 100px; margin: 0 auto;" src="{{{ PhotoUrl }}}" alt="{{ LastName }} {{ FirstName }}">
+							<!--</a>-->
+							<h4>
+								<!--<a class="linkGray" href="{{ profileUrl }}" target="_blank">{{ name }}</a>-->
+								{{ LastName }} {{ FirstName }}
+							</h4>
+							<div>
+								{{#WebSiteUrl}}
+									<a href="{{{ WebSiteUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-link" aria-hidden="true">&nbsp;</i></a>
+								{{/WebSiteUrl}}
+								{{#LinkedInUrl}}
+									<a href="{{{ LinkedInUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-linkedin-square" aria-hidden="true">&nbsp;</i></a>
+								{{/LinkedInUrl}}
+								{{#FaceBookUrl}}
+									<a href="{{{ FaceBookUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-facebook-square" aria-hidden="true">&nbsp;</i></a>
+								{{/FaceBookUrl}}
+								{{#TwitterUrl}}
+									<a href="{{{ TwitterUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-twitter-square" aria-hidden="true">&nbsp;</i></a>
+								{{/TwitterUrl}}
+								{{#YouTubeUrl}}
+									<a href="{{{ YouTubeUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-youtube-square" aria-hidden="true">&nbsp;</i></a>
+								{{/YouTubeUrl}}
+								{{#GitHubUrl}}
+									<a href="{{{ GitHubUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-github-square" aria-hidden="true">&nbsp;</i></a>
+								{{/GitHubUrl}}
+							</div>
+						</div>
+					{{/page.speakers}}
+				</div>
+			</div>
+
+		</div>
+
+
+		{{> sectionFooter}}
+	</body>
+</html>
