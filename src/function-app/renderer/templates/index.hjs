@@ -134,12 +134,12 @@
 						<div class="panel-heading">Актуальные докладчики</div>
 						<div class="panel-body">
 							<div>
-								<a href="#" class="linkGray">
+								<a href="/speakers.html#who-are-our-speakers" class="linkGray">
 									<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Кто такие наши докладчики?
 								</a>
 							</div>
 							<div>
-								<a href="#" class="linkGray">
+								<a href="/speakers.html#how-to-become-a-speaker" class="linkGray">
 									<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Как стать докладчиком?
 								</a>
 							</div>
