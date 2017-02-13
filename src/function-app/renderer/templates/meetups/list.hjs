@@ -8,26 +8,83 @@
 <body>
 	{{> sectionHeader}}
 
-	<div id="years">
-		<ul>
-			{{#page.years}}
-				<li><a href="#year{{ year }}">{{ year }}</a></li>
-			{{/page.years}}
-		</ul>
-		{{#page.years}}
-			<div id="year{{ year }}">
-				{{#meetups}}
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<a href="/meetup-{{ Id }}.html"><h3 class="panel-title">{{ Title }}</h3></a>
-						</div>
-						<div class="panel-body">
-							Panel content
-						</div>
+	<div class="container">
+		<div class="row">
+			<div id="years" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<ul>
+					{{#page.years}}
+						<li>
+							<a class="btn btn-success" href="#year{{ year }}">
+								{{ year }}
+							</a>
+						</li>
+					{{/page.years}}
+				</ul>
+
+				{{#page.years}}
+					<div id="year{{ year }}">
+						{{#meetups}}
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h3 style="padding: 0 0 5px 0; margin: 0;">
+										<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+										<span class="label label-success">{{ DateFormatted }}</span> /
+										<a class="linkGray" href="/meetup-{{ Id }}.html"> {{ Title }}</a>
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+											<div class="text-left">
+												<a href="#">
+													<img class="img-circle img-responsive" style="max-width: 100px;" src="https://pbs.twimg.com/profile_images/3722654974/718e0411759c762708edf6c2fa25065c_400x400.jpeg" alt="{{ name }}">
+												</a>
+												<h4>
+													<a class="linkGray" href="{{ profileUrl }}" target="_blank">{{ name }}Boyko Anton</a>
+												</h4>
+												<!--<div>-->
+													<!--<a href="#" class="linkGrass"><i class="fa fa-2x fa-facebook-square" aria-hidden="true">&nbsp;</i></a>-->
+													<!--<a href="#" class="linkGrass"><i class="fa fa-2x fa-twitter-square" aria-hidden="true">&nbsp;</i></a>-->
+													<!--<a href="#" class="linkGrass"><i class="fa fa-2x fa-youtube-square" aria-hidden="true">&nbsp;</i></a>-->
+													<!--<a href="#" class="linkGrass"><i class="fa fa-2x fa-github-square" aria-hidden="true">&nbsp;</i></a>-->
+												<!--</div>-->
+											</div>
+										</div>
+										<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+											<h3>Topic title</h3>
+											<div>
+												Topic description
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div class="panel-footer text-right">
+									<span class="label label-success panelFooterLabelSpan pull-left">
+										<a href="/meetup-{{ Id }}.html" class="linkWhite">
+											<i class="fa fa-plus-circle" aria-hidden="true"></i>
+											Зарегистрироваться
+										</a>
+									</span>
+									<span class="label label-default panelFooterLabelSpan">
+										<i class="fa fa-map-marker" aria-hidden="true"></i>
+										{{ Location.Address }}
+									</span>
+									<span class="label label-warning panelFooterLabelSpan">
+										<i class="fa fa-map-marker" aria-hidden="true"></i>
+										{{ Location.Title }}
+									</span>
+									<span class="label label-info panelFooterLabelSpan">
+										<i class="fa fa-tag" aria-hidden="true"></i>
+										Бесплатно
+									</span>
+								</div>
+							</div>
+						{{/meetups}}
 					</div>
-				{{/meetups}}
+				{{/page.years}}
 			</div>
-		{{/page.years}}
+		</div>
 	</div>
 
 	{{> sectionFooter}}

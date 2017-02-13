@@ -8,14 +8,193 @@
 	<body>
 		{{> sectionHeader}}
 
-		<div class="jumbotron">
-			<h1>{{ page.meetup.Title }}</h1>
-			<p>
-				{{ page.meetup.Location.Address }}
-			</p>
+		<div class="container spacingForBlocks">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="jumbotron">
+						<h1>
+							{{ page.meetup.Title }}
+						</h1>
+						<a href="#register" class="btn btn-success btn-lg pull-right">
+							<i class="fa fa-plus-circle" aria-hidden="true"></i> Зарегистрироваться
+						</a>
+						<div>
+							<span class="boldLabelText">Адрес:</span> {{ page.meetup.Location.Address }}
+						</div>
+						<div>
+							<span class="boldLabelText">Локация:</span> <span class="label label-warning">{{ page.meetup.Location.Title }}</span>
+						</div>
+						<div>
+							<span class="boldLabelText">Дата:</span> {{ page.meetup.DateFormatted }}
+						</div>
+						<div>
+							<span class="boldLabelText">Время:</span> c {{ page.meetup.TimeStartFormatted }} до {{ page.meetup.TimeEndFormatted }}
+						</div>
+						<div>
+							<span class="boldLabelText">Условия проведения:</span> [бесплатно] по предварительной регистрации
+						</div>
+						<div>
+							<span class="boldLabelText">Как добраться:</span>
+						</div>
+						<div class=googleMapsSizing">
+							<iframe class="googleMapsSizing" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1797.5844894476265!2d30.5480776401821!3d50.4193346735148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf6c2883e71d%3A0x4de8cce13ae56d4e!2z0LLRg9C70LjRhtGPINCR0LDRgdGC0ZbQvtC90L3QsCwgMy8xMiwg0JrQuNGX0LI!5e0!3m2!1suk!2sua!4v1486998366563" frameborder="0" style="border: 0;" allowfullscreen></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="jumbotron">
-			{{{ page.form.registration }}}
+
+		<div class="container spacingForBlocks">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<h2>
+						<i class="fa fa-th-list" aria-hidden="true"></i> Программа встречи:
+					</h2>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" style="margin-bottom: 15px;">
+					<a href="#">
+						<img class="img-circle img-responsive" src="https://pbs.twimg.com/profile_images/3722654974/718e0411759c762708edf6c2fa25065c_400x400.jpeg" alt="{{ name }}">
+					</a>
+					<h4>
+						<a class="linkGray" href="{{ profileUrl }}" target="_blank">{{ name }} Boyko Anton</a>
+					</h4>
+					<div class="text-center">
+						<a href="#" class="linkGrass"><i class="fa fa-2x fa-facebook-square" aria-hidden="true">&nbsp;</i></a>
+						<a href="#" class="linkGrass"><i class="fa fa-2x fa-twitter-square" aria-hidden="true">&nbsp;</i></a>
+						<a href="#" class="linkGrass"><i class="fa fa-2x fa-youtube-square" aria-hidden="true">&nbsp;</i></a>
+						<a href="#" class="linkGrass"><i class="fa fa-2x fa-github-square" aria-hidden="true">&nbsp;</i></a>
+					</div>
+				</div>
+
+				<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bg-info">
+					<h3>
+						Topic title
+					</h3>
+					<div class="text-justify" style="padding-bottom: 20px;">
+						<p>
+							Topic description
+						</p>
+						<p>
+							Конституція — основний державний документ (закон), який визначає державний устрій, порядок і принципи функціонування представницьких, виконавчих та судових органів влади, виборчу систему, права й обов'язки держави, суспільства та громадян.
+						</p>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="container spacingForBlocks">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<h2>
+						<i class="fa fa-address-book" aria-hidden="true"></i> Партнеры встречи:
+					</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="container-fluid">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center" style="margin-bottom: 15px;">
+
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+							<a href="#">
+								<img class="img-responsive" src="https://azurecommunityua.blob.core.windows.net/azureday/2016/partners/jetbrains01.JPG" alt="{{ title }}">
+							</a>
+						</div>
+
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-justify">
+							<h4>
+								<a class="linkGray" href="{{ url }}" target="_blank">{{ title }}</a>
+							</h4>
+							<div>
+								<p>
+									Partner description
+								</p>
+								<p>
+									At JetBrains, code is our passion. For over 15 years we have strived to make the strongest, most effective developer tools on earth. By automating routine checks and corrections, our tools speed up production, freeing developers to grow, discover and create.
+								</p>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- repeat -->
+
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center" style="margin-bottom: 15px;">
+
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+							<a href="#">
+								<img class="img-responsive" src="https://azurecommunityua.blob.core.windows.net/azureday/2016/partners/jetbrains01.JPG" alt="{{ title }}">
+							</a>
+						</div>
+
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-justify">
+							<h4>
+								<a class="linkGray" href="{{ url }}" target="_blank">{{ title }}</a>
+							</h4>
+							<div>
+								<p>
+									Partner description
+								</p>
+								<p>
+									At JetBrains, code is our passion. For over 15 years we have strived to make the strongest, most effective developer tools on earth. By automating routine checks and corrections, our tools speed up production, freeing developers to grow, discover and create.
+								</p>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="container bg-warning spacingForBlocks text-center">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+					<h2>
+						<i class="fa fa-calendar" aria-hidden="true"></i> {{ page.meetup.DateFormatted }} <br />
+						<i class="fa fa-clock-o" aria-hidden="true"></i> {{ page.meetup.TimeStartFormatted }} - {{ page.meetup.TimeEndFormatted }} <br />
+					</h2>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+					<h2>
+						<i class="fa fa-building-o" aria-hidden="true"></i> {{ page.meetup.Location.Title }} по адресу:<br/>
+						<i class="fa fa-map-marker" aria-hidden="true"></i> {{ page.meetup.Location.Address }}
+					</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<!--<div>-->
+					<!--<p>-->
+					<!--<span class="boldLabelText">-->
+					<!--Дополнительно о локации:-->
+					<!--</span>-->
+					<!--</p>-->
+					<!--{{ page.meetup.Location.Description }}-->
+					<!--</div>-->
+				</div>
+			</div>
+		</div>
+
+		<div class="container spacingForBlocks">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<h2>
+						Условия проведения встречи: <i class="fa fa-tag" aria-hidden="true"></i> [бесплатно / FREE] по предварительной регистрации
+					</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="container spacingForBlocks">
+			<div class="jumbotron" id="register">
+				{{{ page.form.registration }}}
+			</div>
 		</div>
 
 		{{> sectionFooter}}

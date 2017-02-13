@@ -4,8 +4,8 @@ var Promise = require('promise');
 var assetsService = require('./../../assets-service');
 var helpersService = require('./../../helpers-service');
 var dataService = require('./../../data-service');
-var appService = require('./../../app-service');
 var partialsService = require('./../_partials');
+var translationService = require('./../../translation-service');
 
 var service = {};
 
@@ -59,7 +59,14 @@ service.render = function() {
 			});
 
 			for (var i = 0; i < years.length; i++) {
-				years[i].meetups = results[4 + i].data;
+				years[i].meetups = results[4 + i].data.map(function(meetup) {
+					var date = new Date(meetup.DateTimeBegin);
+					meetup.DateFormatted = date.getDay() + ' '
+						+ translationService.getMonthName(date.getMonth()) + ' '
+						+ date.getFullYear();
+
+					return meetup;
+				});
 			}
 
 			years.reverse();

@@ -40,7 +40,8 @@ service.render = function(page, arguments) {
 
 	return renderPromise
 		.then(function (result) {
-			var minifiedHtml = getMinifiedHtml(result.html);
+			var minifiedHtml = result.html;
+			// var minifiedHtml = getMinifiedHtml(result.html);
 			return Promise.resolve({ name: result.name, html: minifiedHtml });
 		}, function (err) {
 			return Promise.reject(err);

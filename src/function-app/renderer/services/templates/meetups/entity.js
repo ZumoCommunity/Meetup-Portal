@@ -6,6 +6,8 @@ var helpersService = require('./../../helpers-service');
 var dataService = require('./../../data-service');
 var appService = require('./../../app-service');
 var partialsService = require('./../_partials');
+var configService = require('./../../config-service');
+var translationService = require('./../../translation-service');
 
 var service = {};
 
@@ -40,6 +42,17 @@ service.render = function(meetupId) {
 
 			var meetup = results[1].data;
 			delete meetup['@odata.context'];
+
+			var dateBegin = new Date(meetup.DateTimeBegin);
+			var dateEnd = new Date(meetup.DateTimeEnd);
+			meetup.DateFormatted = dateBegin.getDay() + ' '
+				+ translationService.getMonthName(dateBegin.getMonth()) + ' '
+				+ dateBegin.getFullYear();
+			meetup.TimeStartFormatted = (dateBegin.getUTCHours() + configService.timeZone) + ':'
+				+ dateBegin.getUTCMinutes();
+			meetup.TimeEndFormatted = (dateEnd.getUTCHours() + configService.timeZone) + ':'
+				+ dateEnd.getUTCMinutes();
+
 
 			var registrationFormHtml = results[2];
 
