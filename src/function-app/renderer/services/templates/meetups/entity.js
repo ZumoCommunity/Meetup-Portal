@@ -18,6 +18,7 @@ service.render = function(meetupId) {
 		.addFontAwesome()
 		.addJQuery()
 		.addKnockout()
+		.addLoader()
 		.render();
 
 	var promises = [];
