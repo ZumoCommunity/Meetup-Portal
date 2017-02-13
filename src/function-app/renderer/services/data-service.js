@@ -8,7 +8,8 @@ o().config({
 var service = {};
 
 service.tableNames = {
-	meetups: 'Meetups'
+	meetups: 'Meetups',
+	partners: 'Partners'
 };
 
 service.getTableReference = function(tableName) {

@@ -12,12 +12,14 @@ function getMinifiedHtml(html){
 }
 
 var templates = {
-	meetups: {}
+	meetups: {},
+	pages: {}
 };
 
 templates.index = require('./templates/index');
 templates.meetups.list = require('./templates/meetups/list');
 templates.meetups.entity = require('./templates/meetups/entity');
+templates.pages.partners = require('./templates/pages/partners');
 
 var service = {};
 
@@ -33,6 +35,9 @@ service.render = function(page, arguments) {
 			break;
 		case 'meetup-entity':
 			renderPromise = templates.meetups.entity.render(arguments.meetupId);
+			break;
+		case 'partners':
+			renderPromise = templates.pages.partners.render();
 			break;
 		default:
 			throw new Error('Page type "' + page + '" is not supported.');

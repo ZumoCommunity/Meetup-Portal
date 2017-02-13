@@ -204,7 +204,7 @@
 							{{/page.partners}}
 						</ul>
 						<div class="panel-footer">
-							<a href="#" class="linkGray">
+							<a href="/partners.html" class="linkGray">
 								Все наши партнеры
 							</a>
 						</div>
