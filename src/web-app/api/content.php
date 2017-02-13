@@ -1,14 +1,24 @@
 <?php
 
 $method = $_SERVER['REQUEST_METHOD'];
-$input = json_decode(file_get_contents('php://input'));
 
 if ($method != 'POST') {
     die('Method is not supported');
 }
 
-//TODO: authentication check
+$apiKey = $_GET['api_key'];
+if (empty($apiKey)) {
+    die('You need to provide api_key to access this api.');
+}
+
+$masterKey = getenv('MasterApiKey');
+if ($apiKey != $masterKey) {
+    die('Your api_key is invalid.');
+}
+
 //TODO: input parameters validation
+
+$input = json_decode(file_get_contents('php://input'));
 
 $fileName = './../'.$input->{'fileName'}.'.html';
 $fileContent = $input->{'fileContent'};
