@@ -29,18 +29,19 @@ service.render = function(page, arguments) {
 			renderPromise = templates.index.render();
 			break;
 		case 'meetups-list':
-			renderPromise = templates.meetups.list.render(arguments.year);
+			renderPromise = templates.meetups.list.render();
 			break;
 		case 'meetup-entity':
 			renderPromise = templates.meetups.entity.render(arguments.meetupId);
 			break;
 		default:
-			throw new Error('Page type is not supported.');
+			throw new Error('Page type "' + page + '" is not supported.');
 	}
 
 	return renderPromise
 		.then(function (result) {
-			var minifiedHtml = getMinifiedHtml(result.html);
+			var minifiedHtml = result.html;
+			// var minifiedHtml = getMinifiedHtml(result.html);
 			return Promise.resolve({ name: result.name, html: minifiedHtml });
 		}, function (err) {
 			return Promise.reject(err);

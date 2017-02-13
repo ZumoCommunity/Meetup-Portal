@@ -1,0 +1,75 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    color: #aabd22;
+    font-size: 1.4em;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.captionHeader {
+    color: #fff;
+    text-shadow: #000 0px 0px 7px;
+    font-size: 1.6em;
+    position: relative;
+    top: -80px;
+    left: 20px;
+}
+
+.bg-grass {
+    background-color: #449d44;
+    color: #fff;
+    font-size: 1.4em;
+}
+
+a.linkGrass, a.linkGrass:active, a.linkGrass:visited {
+    color: #449d44;
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+a.linkGrass:hover {
+    text-decoration: underline;
+}
+
+a.linkGray {
+    color: #666;
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+a.linkGray:hover {
+    text-decoration: underline;
+}
+
+a.linkWhite {
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: normal;
+    padding: 3px;
+}
+
+a.linkWhite:hover {
+    text-decoration: underline;
+}
+
+.panelFooterLabelSpan {
+    margin: 0 3px 0 3px;
+}
+
+.googleMapsSizing {
+    width: 100%;
+    min-height: 300px;
+}
+
+.boldLabelText {
+    font-weight: bold;
+    padding-right: 15px;
+}
+
+.spacingForBlocks {
+    padding: 15px 10px 15px 10px;
+}

@@ -1,0 +1,13 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- css -->
+{{#assets.css}}
+    <link href="{{{ . }}}" rel="stylesheet" type="text/css">
+{{/assets.css}}
+<link href="/assets/main.css" rel="stylesheet" type="text/css">
+
+<!-- js -->
+{{#assets.js}}
+    <script src="{{{ . }}}"></script>
+{{/assets.js}}
