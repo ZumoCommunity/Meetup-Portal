@@ -6,6 +6,11 @@ var assets = function(cdnEndpoint) {
 	this.js = [];
 };
 
+assets.prototype.addLoader = function() {
+	this.css.push(cdnEndpoint + '/assets/loader.css');
+	return this;
+};
+
 assets.prototype.addJQuery = function() {
 	this.js.push(cdnEndpoint + '/assets/jquery/jquery-3.1.1.min.js');
 	return this;
