@@ -84,7 +84,7 @@
 										{{ DateFormatted }}
 									</span>
 
-									<a href="/meetup-{{ Id }}.html" class="linkGray">
+									<a href="/{{ Uri }}.html" class="linkGray">
 										{{ Title }}
 									</a>
 

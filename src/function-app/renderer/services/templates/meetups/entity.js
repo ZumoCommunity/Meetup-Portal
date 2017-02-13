@@ -68,7 +68,7 @@ service.render = function(meetupId) {
 
 			var html = Mustache.render(template, model, partials);
 
-			return Promise.resolve({ name: meetup.Url, html: html });
+			return Promise.resolve({ name: meetup.Uri, html: html });
 		}, function (err) {
 			return Promise.reject(err);
 		});
