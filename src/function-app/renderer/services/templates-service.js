@@ -20,6 +20,7 @@ templates.index = require('./templates/index');
 templates.meetups.list = require('./templates/meetups/list');
 templates.meetups.entity = require('./templates/meetups/entity');
 templates.pages.partners = require('./templates/pages/partners');
+templates.pages.speakers = require('./templates/pages/speakers');
 
 var service = {};
 
@@ -38,6 +39,9 @@ service.render = function(page, arguments) {
 			break;
 		case 'partners':
 			renderPromise = templates.pages.partners.render();
+			break;
+		case 'speakers':
+			renderPromise = templates.pages.speakers.render();
 			break;
 		default:
 			throw new Error('Page type "' + page + '" is not supported.');

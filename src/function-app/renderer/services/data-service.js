@@ -9,7 +9,8 @@ var service = {};
 
 service.tableNames = {
 	meetups: 'Meetups',
-	partners: 'Partners'
+	partners: 'Partners',
+	speakers: 'Speakers'
 };
 
 service.getTableReference = function(tableName) {
