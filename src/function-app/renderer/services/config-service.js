@@ -15,5 +15,6 @@ service.storageConnectionString = nconf.get('Storage')|| nconf.get('Values').Sto
 service.meetupODataApiEndpoint = nconf.get('MeetupODataApiEndpoint')|| nconf.get('Values').MeetupODataApiEndpoint;
 service.applicationApiEndpoint = nconf.get('ApplicationApiEndpoint')|| nconf.get('Values').ApplicationApiEndpoint;
 service.timeZone = parseInt(nconf.get('TimeZone')|| nconf.get('Values').TimeZone);
+service.GoogleMapsApiKey = nconf.get('GoogleMapsApiKey')|| nconf.get('Values').GoogleMapsApiKey;
 
 module.exports = service;

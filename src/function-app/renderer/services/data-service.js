@@ -8,6 +8,7 @@ o().config({
 var service = {};
 
 service.tableNames = {
+	agendaItems: 'AgendaItems',
 	meetups: 'Meetups',
 	partners: 'Partners',
 	speakers: 'Speakers'

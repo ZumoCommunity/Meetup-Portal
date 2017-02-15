@@ -24,11 +24,12 @@ service.render = function(meetupId) {
 	var promises = [];
 
 	promises.push(helpersService.readLocalFile('templates/meetups/entity.hjs'));
-	promises.push(dataService.getTableReference(dataService.tableNames.meetups).expand('Location').find(meetupId).get());
+	promises.push(dataService.getTableReference(dataService.tableNames.meetups).expand('Location,Partners').find(meetupId).get());
 	promises.push(appService.getMeetupRegistrationFormHtml(meetupId));
 	promises.push(partialsService.renderHead(assets));
 	promises.push(partialsService.renderHeader());
 	promises.push(partialsService.renderFooter());
+	promises.push(dataService.getTableReference(dataService.tableNames.agendaItems).expand('Topic,Speakers').filter('MeetupId eq ' + meetupId).get());
 
 	return Promise
 		.all(promises)
@@ -42,18 +43,28 @@ service.render = function(meetupId) {
 			};
 
 			var meetup = results[1].data;
+			meetup.AgendaItems = results[6].data;
 			delete meetup['@odata.context'];
+
+			meetup.Partners = meetup.Partners.sort(function(a, b) {
+				if (a.Title > b.Title) {
+					return 1;
+				}
+				if (a.Title < b.Title) {
+					return -1;
+				}
+				return 0;
+			});
 
 			var dateBegin = new Date(meetup.DateTimeBegin);
 			var dateEnd = new Date(meetup.DateTimeEnd);
-			meetup.DateFormatted = dateBegin.getDay() + ' '
+			meetup.DateFormatted = dateBegin.getDate() + ' '
 				+ translationService.getMonthName(dateBegin.getMonth()) + ' '
 				+ dateBegin.getFullYear();
 			meetup.TimeStartFormatted = (dateBegin.getUTCHours() + configService.timeZone) + ':'
-				+ dateBegin.getUTCMinutes();
+				+ (dateBegin.getUTCMinutes() < 10 ? '0' + dateBegin.getUTCMinutes().toString(): dateBegin.getUTCMinutes());
 			meetup.TimeEndFormatted = (dateEnd.getUTCHours() + configService.timeZone) + ':'
-				+ dateEnd.getUTCMinutes();
-
+				+ (dateEnd.getUTCMinutes() < 10 ? '0' + dateEnd.getUTCMinutes().toString(): dateEnd.getUTCMinutes());
 
 			var registrationFormHtml = results[2];
 
@@ -62,6 +73,9 @@ service.render = function(meetupId) {
 					meetup: meetup,
 					form: {
 						registration: registrationFormHtml
+					},
+					configs: {
+						GoogleMapsApiKey: configService.GoogleMapsApiKey
 					}
 				}
 			};

@@ -31,14 +31,35 @@
 							<span class="boldLabelText">Время:</span> c {{ page.meetup.TimeStartFormatted }} до {{ page.meetup.TimeEndFormatted }}
 						</div>
 						<div>
-							<span class="boldLabelText">Условия проведения:</span> [бесплатно] по предварительной регистрации
+							<span class="boldLabelText">
+								Условия проведения:</span>
+								{{#page.meetup.AttendanceFee}}
+									{{ page.meetup.AttendanceFee }} {{ page.meetup.AttendanceFeeCurency }}
+								{{/page.meetup.AttendanceFee}}
+								{{^page.meetup.AttendanceFee}}
+									бесплатно
+								{{/page.meetup.AttendanceFee}}
+								по предварительной регистрации
 						</div>
 						<div>
 							<span class="boldLabelText">Как добраться:</span>
 						</div>
-						<div class=googleMapsSizing">
-							<iframe class="googleMapsSizing" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1797.5844894476265!2d30.5480776401821!3d50.4193346735148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf6c2883e71d%3A0x4de8cce13ae56d4e!2z0LLRg9C70LjRhtGPINCR0LDRgdGC0ZbQvtC90L3QsCwgMy8xMiwg0JrQuNGX0LI!5e0!3m2!1suk!2sua!4v1486998366563" frameborder="0" style="border: 0;" allowfullscreen></iframe>
+						<div id="map" class="googleMapsSizing">
 						</div>
+						<script>
+							function initMap() {
+								var location = { lat: {{ page.meetup.Location.Latitude }}, lng: {{ page.meetup.Location.Longitude }} };
+								var map = new google.maps.Map(document.getElementById('map'), {
+									zoom: 17,
+									center: location
+								});
+								var marker = new google.maps.Marker({
+									position: location,
+									map: map
+								});
+							}
+						</script>
+						<script src="https://maps.googleapis.com/maps/api/js?key={{ page.configs.GoogleMapsApiKey }}&language=ru&region=UA&callback=initMap"></script>
 					</div>
 				</div>
 			</div>
@@ -53,36 +74,63 @@
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" style="margin-bottom: 15px;">
-					<a href="#">
-						<img class="img-circle img-responsive" src="https://pbs.twimg.com/profile_images/3722654974/718e0411759c762708edf6c2fa25065c_400x400.jpeg" alt="{{ name }}">
-					</a>
-					<h4>
-						<a class="linkGray" href="{{ profileUrl }}" target="_blank">{{ name }} Boyko Anton</a>
-					</h4>
-					<div class="text-center">
-						<a href="#" class="linkGrass"><i class="fa fa-2x fa-facebook-square" aria-hidden="true">&nbsp;</i></a>
-						<a href="#" class="linkGrass"><i class="fa fa-2x fa-twitter-square" aria-hidden="true">&nbsp;</i></a>
-						<a href="#" class="linkGrass"><i class="fa fa-2x fa-youtube-square" aria-hidden="true">&nbsp;</i></a>
-						<a href="#" class="linkGrass"><i class="fa fa-2x fa-github-square" aria-hidden="true">&nbsp;</i></a>
+			<div style="border-bottom: 1px dashed #3c3c3c; border-top: 1px dashed #3c3c3c;">
+				{{#page.meetup.AgendaItems}}
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<h3>
+							<i class="fa fa-play" aria-hidden="true"></i>
+							{{ Topic.Title }}
+						</h3>
+						<div class="text-justify" style="padding-bottom: 20px;">
+							{{{ Topic.Description }}}
+						</div>
 					</div>
 				</div>
+				{{#Speakers}}
+					<div class="row">
+						<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 text-center" style="margin-bottom: 15px;">
+							<!--<a href="#">-->
+							<img class="img-circle img-responsive" style="max-height: 100px; margin: 0 auto;" src="{{{ PhotoUrl }}}" alt="{{ LastName }} {{ FirstName }}">
+							<!--</a>-->
+							<h4>
+								<!--<a class="linkGray" href="{{ profileUrl }}" target="_blank">{{ name }}</a>-->
+								{{ LastName }} {{ FirstName }}
+							</h4>
+							<div>
+								{{#WebSiteUrl}}
+									<a href="{{{ WebSiteUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-link" aria-hidden="true">&nbsp;</i></a>
+								{{/WebSiteUrl}}
+								{{#LinkedInUrl}}
+									<a href="{{{ LinkedInUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-linkedin-square" aria-hidden="true">&nbsp;</i></a>
+								{{/LinkedInUrl}}
+								{{#FaceBookUrl}}
+									<a href="{{{ FaceBookUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-facebook-square" aria-hidden="true">&nbsp;</i></a>
+								{{/FaceBookUrl}}
+								{{#TwitterUrl}}
+									<a href="{{{ TwitterUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-twitter-square" aria-hidden="true">&nbsp;</i></a>
+								{{/TwitterUrl}}
+								{{#YouTubeUrl}}
+									<a href="{{{ YouTubeUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-youtube-square" aria-hidden="true">&nbsp;</i></a>
+								{{/YouTubeUrl}}
+								{{#GitHubUrl}}
+									<a href="{{{ GitHubUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-github-square" aria-hidden="true">&nbsp;</i></a>
+								{{/GitHubUrl}}
+							</div>
+						</div>
 
-				<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bg-info">
-					<h3>
-						Topic title
-					</h3>
-					<div class="text-justify" style="padding-bottom: 20px;">
-						<p>
-							Topic description
-						</p>
-						<p>
-							Конституція — основний державний документ (закон), який визначає державний устрій, порядок і принципи функціонування представницьких, виконавчих та судових органів влади, виборчу систему, права й обов'язки держави, суспільства та громадян.
-						</p>
+						<div class="col-lg-9 col-md-9 col-sm-8 col-xs-6 bg-info">
+							<h4>
+								<i class="fa fa-address-card-o" aria-hidden="true"></i>
+								О докладчике
+							</h4>
+							<div class="text-justify" style="padding-bottom: 20px;">
+								{{{ Bio }}}
+							</div>
+						</div>
 					</div>
-				</div>
-
+				{{/Speakers}}
+			{{/page.meetup.AgendaItems}}
 			</div>
 
 		</div>
@@ -97,55 +145,27 @@
 			</div>
 			<div class="row">
 				<div class="container-fluid">
-					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center" style="margin-bottom: 15px;">
 
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-							<a href="#">
-								<img class="img-responsive" src="https://azurecommunityua.blob.core.windows.net/azureday/2016/partners/jetbrains01.JPG" alt="{{ title }}">
-							</a>
-						</div>
+					{{#page.meetup.Partners}}
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="margin-bottom: 15px;">
 
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-justify">
-							<h4>
-								<a class="linkGray" href="{{ url }}" target="_blank">{{ title }}</a>
-							</h4>
-							<div>
-								<p>
-									Partner description
-								</p>
-								<p>
-									At JetBrains, code is our passion. For over 15 years we have strived to make the strongest, most effective developer tools on earth. By automating routine checks and corrections, our tools speed up production, freeing developers to grow, discover and create.
-								</p>
+							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center">
+								<a href="{{{ WebSiteUrl }}}" target="_blank">
+									<img class="img-responsive" src="{{{ LogoUrl }}}" alt="{{ Title }}">
+								</a>
 							</div>
-						</div>
 
-					</div>
-
-					<!-- repeat -->
-
-					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center" style="margin-bottom: 15px;">
-
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-							<a href="#">
-								<img class="img-responsive" src="https://azurecommunityua.blob.core.windows.net/azureday/2016/partners/jetbrains01.JPG" alt="{{ title }}">
-							</a>
-						</div>
-
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-justify">
-							<h4>
-								<a class="linkGray" href="{{ url }}" target="_blank">{{ title }}</a>
-							</h4>
-							<div>
-								<p>
-									Partner description
-								</p>
-								<p>
-									At JetBrains, code is our passion. For over 15 years we have strived to make the strongest, most effective developer tools on earth. By automating routine checks and corrections, our tools speed up production, freeing developers to grow, discover and create.
-								</p>
+							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 text-justify">
+								<h4>
+									<a class="linkGray" href="{{{ WebSiteUrl }}}" target="_blank">{{ Title }}</a>
+								</h4>
+								<div>
+									{{{ Description }}}
+								</div>
 							</div>
-						</div>
 
-					</div>
+						</div>
+					{{/page.meetup.Partners}}
 
 				</div>
 			</div>
@@ -185,7 +205,14 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<h2>
-						Условия проведения встречи: <i class="fa fa-tag" aria-hidden="true"></i> [бесплатно / FREE] по предварительной регистрации
+						Условия проведения встречи: <i class="fa fa-tag" aria-hidden="true"></i>
+						{{#page.meetup.AttendanceFee}}
+							{{ page.meetup.AttendanceFee }} {{ page.meetup.AttendanceFeeCurency }}
+						{{/page.meetup.AttendanceFee}}
+						{{^page.meetup.AttendanceFee}}
+							Бесплатно
+						{{/page.meetup.AttendanceFee}}
+						по предварительной регистрации
 					</h2>
 				</div>
 			</div>
