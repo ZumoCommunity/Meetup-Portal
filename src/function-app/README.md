@@ -23,13 +23,18 @@ Listener function should know the web site structure and know how each entity ty
 
 Listens for tasks for rendering html pages to appear in internal storage queue.
 
-How to run using func emulator:
+#### Run renderer for pages without arguments
 ```batch
 func run renderer -c "{ page: 'index' }"
+func run renderer -c "{ page: 'partners' }"
+func run renderer -c "{ page: 'speakers' }"
+func run renderer -c "{ page: 'meetups-list' }"
 ```
-or
+
+#### Run renderer for pages with arguments
 ```batch
-func run renderer -c "{ page: 'meetup-entity', arguments: { meetupId: '9673cf65-3bf0-4176-a98b-eec6764867ed' } }"
+func run renderer -c "{ page: 'meetup-entity', arguments: { meetupId: '<uuid>' } }"
 ```
+
 
 ## Timer function
