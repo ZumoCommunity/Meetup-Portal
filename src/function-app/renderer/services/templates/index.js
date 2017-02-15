@@ -22,7 +22,9 @@ service.render = function() {
 	promises.push(partialsService.renderHead(assets));
 	promises.push(partialsService.renderHeader());
 	promises.push(partialsService.renderFooter());
-	promises.push( dataService.getTableReference(dataService.tableNames.meetups).orderBy('DateTimeBegin').filter('DateTimeBegin ge ' + (new Date()).toISOString()).get());
+	promises.push(dataService.getTableReference(dataService.tableNames.meetups).expand('Location').orderBy('DateTimeBegin').filter('DateTimeBegin ge ' + (new Date()).toISOString()).get());
+	promises.push(dataService.getTableReference(dataService.tableNames.partners).orderBy('Title').get());
+	promises.push(dataService.getTableReference(dataService.tableNames.agendaItems).top(3).expand('Speakers').orderBy('Meetup/DateTimeBegin').filter('Meetup/DateTimeBegin ge ' + (new Date()).toISOString()).get());
 
 	return Promise
 		.all(promises)
@@ -35,35 +37,26 @@ service.render = function() {
 				sectionFooter: results[3]
 			};
 
-			var partners = [
-				{ name: 'Microsoft Ukraine', webUrl: '' },
-				{ name: 'DataArt', webUrl: '' },
-				{ name: 'EPAM', webUrl: '' },
-				{ name: 'Ciklum', webUrl: '' },
-				{ name: 'GlobalLogic', webUrl: '' }
-			];
-
 			var upcomingMeetups = results[4].data.map(function(meetup) {
 				var date = new Date(meetup.DateTimeBegin);
-				meetup.DateFormatted = date.getDay() + ' '
+				meetup.DateFormatted = date.getDate() + ' '
 					+ translationService.getMonthName(date.getMonth()) + ' '
 					+ date.getFullYear();
 
 				return meetup;
 			});
 
-			var speakers = [
-				{ name: 'Anton Boyko', profileUrl: '' },
-				{ name: 'Denis Reznik', profileUrl: '' },
-				{ name: 'Alexandr Tkachenko', profileUrl: '' },
-				{ name: 'Valentine Radchuk', profileUrl: '' }
-			];
+			var partners = results[5].data;
+
+			var speakers = results[6].data.reduce(function(res, agendaItem) {
+				for (var i = 0; i < agendaItem.Speakers.length; i++) {
+					res.push(agendaItem.Speakers[i]);
+				}
+				return res;
+			}, []);
 
 			var socials = [
-				{ name: 'Facebook', url: '', fa: 'fa-facebook-official' },
-				{ name: 'Twitter', url: '', fa: 'fa-twitter-square' },
-				{ name: 'Google+', url: '', fa: 'fa-google-plus-square' },
-				{ name: 'YouTube', url: '', fa: 'fa-youtube-square' }
+				{ name: 'Facebook', url: 'https://www.facebook.com/groups/azure.ua/', fa: 'fa-facebook-official' }
 			];
 
 			var model = {

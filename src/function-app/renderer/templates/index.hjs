@@ -64,47 +64,51 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">Ближайшие события</div>
 
-						<div class="panel-body">
-							<div>
-								<a href="#" class="linkGray">
-									<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Как зарегистрироваться на событие?
-								</a>
-							</div>
-							<div>
-								<a href="#" class="linkGray">
-									<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Как провести событие у вас на локации?
-								</a>
-							</div>
-						</div>
+						<!--<div class="panel-body">-->
+							<!--<div>-->
+								<!--<a href="#" class="linkGray">-->
+									<!--<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Как зарегистрироваться на событие?-->
+								<!--</a>-->
+							<!--</div>-->
+							<!--<div>-->
+								<!--<a href="#" class="linkGray">-->
+									<!--<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Как провести событие у вас на локации?-->
+								<!--</a>-->
+							<!--</div>-->
+						<!--</div>-->
 
-						<ul class="list-group">
+						<div>
 							{{#page.upcomingMeetups}}
-								<li class="list-group-item">
+								<div style="padding: 15px; min-height: 25px; clear: both;">
 									<span class="label label-success panelFooterLabelSpan">
 										{{ DateFormatted }}
 									</span>
-
+									/
 									<a href="/{{ Uri }}.html" class="linkGray">
 										{{ Title }}
 									</a>
 
-									<div class="pull-right">
-										<span class="label label-default panelFooterLabelSpan">
+									<span class="label label-info panelFooterLabelSpan pull-right">
+											<i class="fa fa-tag" aria-hidden="true"></i>
+										{{#AttendanceFee}}
+											{{ AttendanceFee }} {{ AttendanceFeeCurency }}
+										{{/AttendanceFee}}
+										{{^AttendanceFee}}
+											Бесплатно
+										{{/AttendanceFee}}
+									</span>
+									<span class="label label-warning panelFooterLabelSpan pull-right">
 										<i class="fa fa-map-marker" aria-hidden="true"></i>
-										Address
+										{{ Location.Title }}
 									</span>
-										<span class="label label-warning panelFooterLabelSpan">
+									<span class="label label-default panelFooterLabelSpan pull-right">
 										<i class="fa fa-building-o" aria-hidden="true"></i>
-										Location
+										{{ Location.Address }}
 									</span>
-										<span class="label label-info panelFooterLabelSpan">
-										<i class="fa fa-tag" aria-hidden="true"></i>
-										Бесплатно
-									</span>
-									</div>
-								</li>
+								</div>
 							{{/page.upcomingMeetups}}
-						</ul>
+						</div>
+
 						<div class="panel-footer bg-warning">
 							<a href="/meetups-list.html" class="linkGray">
 								Все наши события
@@ -132,33 +136,49 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">Актуальные докладчики</div>
-						<div class="panel-body">
-							<div>
-								<a href="/speakers.html#who-are-our-speakers" class="linkGray">
-									<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Кто такие наши докладчики?
-								</a>
-							</div>
-							<div>
-								<a href="/speakers.html#how-to-become-a-speaker" class="linkGray">
-									<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Как стать докладчиком?
-								</a>
-							</div>
-						</div>
 
-						<div class="container-fluid">
+						<!--<div class="panel-body">-->
+							<!--<div>-->
+								<!--<a href="/speakers.html#who-are-our-speakers" class="linkGray">-->
+									<!--<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Кто такие наши докладчики?-->
+								<!--</a>-->
+							<!--</div>-->
+							<!--<div>-->
+								<!--<a href="/speakers.html#how-to-become-a-speaker" class="linkGray">-->
+									<!--<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Как стать докладчиком?-->
+								<!--</a>-->
+							<!--</div>-->
+						<!--</div>-->
+
+						<div class="container-fluid" style="padding-top: 10px;">
 							{{#page.speakers}}
 								<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 text-center" style="margin-bottom: 15px;">
-									<a href="#">
-										<img class="img-circle img-responsive" src="https://pbs.twimg.com/profile_images/3722654974/718e0411759c762708edf6c2fa25065c_400x400.jpeg" alt="{{ name }}">
-									</a>
+									<!--<a href="#">-->
+									<img class="img-circle img-responsive" style="max-height: 100px; margin: 0 auto;" src="{{{ PhotoUrl }}}" alt="{{ LastName }} {{ FirstName }}">
+									<!--</a>-->
 									<h4>
-										<a class="linkGray" href="{{ profileUrl }}" target="_blank">{{ name }}</a>
+										<!--<a class="linkGray" href="{{ profileUrl }}" target="_blank">{{ name }}</a>-->
+										{{ LastName }} {{ FirstName }}
 									</h4>
 									<div>
-										<a href="#" class="linkGrass"><i class="fa fa-2x fa-facebook-square" aria-hidden="true">&nbsp;</i></a>
-										<a href="#" class="linkGrass"><i class="fa fa-2x fa-twitter-square" aria-hidden="true">&nbsp;</i></a>
-										<a href="#" class="linkGrass"><i class="fa fa-2x fa-youtube-square" aria-hidden="true">&nbsp;</i></a>
-										<a href="#" class="linkGrass"><i class="fa fa-2x fa-github-square" aria-hidden="true">&nbsp;</i></a>
+										{{#WebSiteUrl}}
+											<a href="{{{ WebSiteUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-link" aria-hidden="true">&nbsp;</i></a>
+										{{/WebSiteUrl}}
+										{{#LinkedInUrl}}
+											<a href="{{{ LinkedInUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-linkedin-square" aria-hidden="true">&nbsp;</i></a>
+										{{/LinkedInUrl}}
+										{{#FaceBookUrl}}
+											<a href="{{{ FaceBookUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-facebook-square" aria-hidden="true">&nbsp;</i></a>
+										{{/FaceBookUrl}}
+										{{#TwitterUrl}}
+											<a href="{{{ TwitterUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-twitter-square" aria-hidden="true">&nbsp;</i></a>
+										{{/TwitterUrl}}
+										{{#YouTubeUrl}}
+											<a href="{{{ YouTubeUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-youtube-square" aria-hidden="true">&nbsp;</i></a>
+										{{/YouTubeUrl}}
+										{{#GitHubUrl}}
+											<a href="{{{ GitHubUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-github-square" aria-hidden="true">&nbsp;</i></a>
+										{{/GitHubUrl}}
 									</div>
 								</div>
 							{{/page.speakers}}
@@ -181,28 +201,32 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">Наши любимые партнеры</div>
 
-						<div class="panel-body">
-							<div>
-								<a href="/partners.html#who-are-our-partners" class="linkGray">
-									<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Кто такие наши партнеры?
-								</a>
-							</div>
-							<div>
-								<a href="/partners.html#how-to-become-a-partner" class="linkGray">
-									<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Как стать партнером?
-								</a>
-							</div>
+						<!--<div class="panel-body">-->
+							<!--<div>-->
+								<!--<a href="/partners.html#who-are-our-partners" class="linkGray">-->
+									<!--<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Кто такие наши партнеры?-->
+								<!--</a>-->
+							<!--</div>-->
+							<!--<div>-->
+								<!--<a href="/partners.html#how-to-become-a-partner" class="linkGray">-->
+									<!--<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Как стать партнером?-->
+								<!--</a>-->
+							<!--</div>-->
+						<!--</div>-->
+
+						<div class="container-fluid">
+							{{#page.partners}}
+								<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 text-center" style="margin-bottom: 15px;">
+									<a href="#">
+										<img class="img-responsive" src="{{{ LogoUrl }}}" alt="{{ Title }}">
+									</a>
+									<h4>
+										<a class="linkGray" href="{{ WebSiteUrl }}" target="_blank">{{ Title }}</a>
+									</h4>
+								</div>
+							{{/page.partners}}
 						</div>
 
-						<ul class="list-group">
-							{{#page.partners}}
-								<li class="list-group-item">
-									<a href="{{ webUrl }}" target="_blank" class="linkGray">
-									{{ name }}
-									</a>
-								</li>
-							{{/page.partners}}
-						</ul>
 						<div class="panel-footer">
 							<a href="/partners.html" class="linkGray">
 								Все наши партнеры
