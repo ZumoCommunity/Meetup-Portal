@@ -29,39 +29,60 @@
 									<h3 style="padding: 0 0 5px 0; margin: 0;">
 										<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
 										<span class="label label-success">{{ DateFormatted }}</span> /
-										<a class="linkGray" href="/meetup-{{ Id }}.html"> {{ Title }}</a>
+										<a class="linkGray" href="/{{ Uri }}.html"> {{ Title }}</a>
 									</h3>
 								</div>
 								<div class="panel-body">
-									<div class="row">
-										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-											<div class="text-left">
-												<a href="#">
-													<img class="img-circle img-responsive" style="max-width: 100px;" src="https://pbs.twimg.com/profile_images/3722654974/718e0411759c762708edf6c2fa25065c_400x400.jpeg" alt="{{ name }}">
-												</a>
-												<h4>
-													<a class="linkGray" href="{{ profileUrl }}" target="_blank">{{ name }}Boyko Anton</a>
-												</h4>
-												<!--<div>-->
-													<!--<a href="#" class="linkGrass"><i class="fa fa-2x fa-facebook-square" aria-hidden="true">&nbsp;</i></a>-->
-													<!--<a href="#" class="linkGrass"><i class="fa fa-2x fa-twitter-square" aria-hidden="true">&nbsp;</i></a>-->
-													<!--<a href="#" class="linkGrass"><i class="fa fa-2x fa-youtube-square" aria-hidden="true">&nbsp;</i></a>-->
-													<!--<a href="#" class="linkGrass"><i class="fa fa-2x fa-github-square" aria-hidden="true">&nbsp;</i></a>-->
-												<!--</div>-->
-											</div>
-										</div>
-										<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-											<h3>Topic title</h3>
-											<div>
-												Topic description
-											</div>
-										</div>
 
-									</div>
+									{{#AgendaItems}}
+										<div class="row">
+
+											{{#Speakers}}
+												<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 text-center" style="margin-bottom: 15px;">
+													<!--<a href="#">-->
+													<img class="img-circle img-responsive" style="max-height: 100px; margin: 0 auto;" src="{{{ PhotoUrl }}}" alt="{{ LastName }} {{ FirstName }}">
+													<!--</a>-->
+													<h4>
+														<!--<a class="linkGray" href="{{ profileUrl }}" target="_blank">{{ name }}</a>-->
+														{{ LastName }} {{ FirstName }}
+													</h4>
+													<div>
+														{{#WebSiteUrl}}
+															<a href="{{{ WebSiteUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-link" aria-hidden="true">&nbsp;</i></a>
+														{{/WebSiteUrl}}
+														{{#LinkedInUrl}}
+															<a href="{{{ LinkedInUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-linkedin-square" aria-hidden="true">&nbsp;</i></a>
+														{{/LinkedInUrl}}
+														{{#FaceBookUrl}}
+															<a href="{{{ FaceBookUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-facebook-square" aria-hidden="true">&nbsp;</i></a>
+														{{/FaceBookUrl}}
+														{{#TwitterUrl}}
+															<a href="{{{ TwitterUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-twitter-square" aria-hidden="true">&nbsp;</i></a>
+														{{/TwitterUrl}}
+														{{#YouTubeUrl}}
+															<a href="{{{ YouTubeUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-youtube-square" aria-hidden="true">&nbsp;</i></a>
+														{{/YouTubeUrl}}
+														{{#GitHubUrl}}
+															<a href="{{{ GitHubUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-github-square" aria-hidden="true">&nbsp;</i></a>
+														{{/GitHubUrl}}
+													</div>
+												</div>
+											{{/Speakers}}
+
+											<div class="col-lg-9 col-md-9 col-sm-8 col-xs-6">
+												<h3>{{ Topic.Title }}</h3>
+												<div>
+													{{{ Topic.Description }}}
+												</div>
+											</div>
+
+										</div>
+									{{/AgendaItems}}
+
 								</div>
 								<div class="panel-footer text-right">
 									<span class="label label-success panelFooterLabelSpan pull-left">
-										<a href="/meetup-{{ Id }}.html" class="linkWhite">
+										<a href="/{{ Uri }}.html" class="linkWhite">
 											<i class="fa fa-plus-circle" aria-hidden="true"></i>
 											Зарегистрироваться
 										</a>
@@ -76,7 +97,12 @@
 									</span>
 									<span class="label label-info panelFooterLabelSpan">
 										<i class="fa fa-tag" aria-hidden="true"></i>
-										Бесплатно
+										{{#AttendanceFee}}
+											{{ AttendanceFee }} {{ AttendanceFeeCurency }}
+										{{/AttendanceFee}}
+										{{^AttendanceFee}}
+											Бесплатно
+										{{/AttendanceFee}}
 									</span>
 								</div>
 							</div>
