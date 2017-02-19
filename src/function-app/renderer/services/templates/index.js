@@ -24,7 +24,7 @@ service.render = function() {
 	promises.push(partialsService.renderFooter());
 	promises.push(dataService.getTableReference(dataService.tableNames.meetups).expand('Location').orderBy('DateTimeBegin').filter('DateTimeBegin ge ' + (new Date()).toISOString()).get());
 	promises.push(dataService.getTableReference(dataService.tableNames.partners).orderBy('Title').get());
-	promises.push(dataService.getTableReference(dataService.tableNames.agendaItems).top(3).expand('Speakers').orderBy('Meetup/DateTimeBegin').filter('Meetup/DateTimeBegin ge ' + (new Date()).toISOString()).get());
+	promises.push(dataService.getTableReference(dataService.tableNames.agendaItems).expand('Topic,Speakers').orderBy('Meetup/DateTimeBegin').filter('Meetup/DateTimeBegin ge ' + (new Date()).toISOString()).get());
 
 	return Promise
 		.all(promises)
@@ -48,11 +48,26 @@ service.render = function() {
 
 			var partners = results[5].data;
 
-			var speakers = results[6].data.reduce(function(res, agendaItem) {
+			var agendaItems = results[6].data;
+
+			upcomingMeetups = upcomingMeetups.map(function(meetup) {
+				meetup.AgendaItems = agendaItems.filter(function (agendaItem) {
+					return agendaItem.MeetupId == meetup.Id;
+				});
+				return meetup;
+			});
+
+			var speakers = agendaItems.reduce(function(speakersArray, agendaItem) {
 				for (var i = 0; i < agendaItem.Speakers.length; i++) {
-					res.push(agendaItem.Speakers[i]);
+					var isSpeakerExists = speakersArray.filter(function (speaker) {
+						return speaker.Id == agendaItem.Speakers[i].Id;
+					}).length != 0;
+
+					if (!isSpeakerExists) {
+						speakersArray.push(agendaItem.Speakers[i]);
+					}
 				}
-				return res;
+				return speakersArray;
 			}, []);
 
 			var socials = [
