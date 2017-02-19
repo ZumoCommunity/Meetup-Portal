@@ -14,7 +14,7 @@
 					<div>
 						{{ page.title }}
 					</div>
-					<img src="https://azureday.net/Theme/img/_slides/01.jpg" class="img-responsive img-rounded" alt="meetups" />
+					<img src="/images/azureday2017.jpg" class="img-responsive img-rounded" alt="meetups" />
 					<h1 class="captionHeader" style="padding-bottom: 0; margin-bottom: 0;">
 						<span class="glyphicon glyphicon-fire" aria-hidden="true"></span> Сообщество архитекторов и разработчиков приложений на базе Microsoft Azure
 					</h1>
@@ -61,64 +61,137 @@
 			<div class="row">
 				<!-- meetups -->
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="panel panel-default">
-						<div class="panel-heading">Ближайшие события</div>
-
-						<div class="panel-body">
-							<div>
-								<a href="#" class="linkGray">
-									<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Как зарегистрироваться на событие?
-								</a>
-							</div>
-							<div>
-								<a href="#" class="linkGray">
-									<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Как провести событие у вас на локации?
-								</a>
-							</div>
+						<div class="indexHeading alert alert-warning">
+							<span>
+								Ближайшие события
+							</span>
 						</div>
 
-						<ul class="list-group">
-							{{#page.upcomingMeetups}}
-								<li class="list-group-item">
-									<span class="label label-success panelFooterLabelSpan">
-										{{ DateFormatted }}
-									</span>
+						<!--<div class="panel-body">-->
+							<!--<div>-->
+								<!--<a href="#" class="linkGray">-->
+									<!--<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Как зарегистрироваться на событие?-->
+								<!--</a>-->
+							<!--</div>-->
+							<!--<div>-->
+								<!--<a href="#" class="linkGray">-->
+									<!--<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Как провести событие у вас на локации?-->
+								<!--</a>-->
+							<!--</div>-->
+						<!--</div>-->
 
-									<a href="/{{ Uri }}.html" class="linkGray">
-										{{ Title }}
-									</a>
+						<div class="text-justify">
+							<i class="fa fa-coffee fa-3x fa-pull-left" style="padding-left: 15px;" aria-hidden="true"></i>
 
-									<div class="pull-right">
-										<span class="label label-default panelFooterLabelSpan">
-										<i class="fa fa-map-marker" aria-hidden="true"></i>
-										Address
-									</span>
-										<span class="label label-warning panelFooterLabelSpan">
-										<i class="fa fa-building-o" aria-hidden="true"></i>
-										Location
-									</span>
-										<span class="label label-info panelFooterLabelSpan">
-										<i class="fa fa-tag" aria-hidden="true"></i>
-										Бесплатно
-									</span>
+							<p style="margin: 15px;">
+								Если у вас намечается конференция, встреча сообщества, посиделки на тему  IT или просто есть свободный зал, то мы с радостью придём к вам в гости. Мы готовы поддержать ваше мероприятие предложив вам докладчика, а также помочь с приглашением людей.
+							</p>
+							<p style="margin: 15px;">
+								Если вам интересно сотрудничество, то пишите нам на адрес <a href="mailto:partner@msazureclub.com">partner@msazureclub.com</a>.
+							</p>
+						</div>
+
+					{{#page.upcomingMeetups}}
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 style="padding: 0 0 5px 0; margin: 0;">
+									<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+									<span class="label label-success">{{ DateFormatted }}</span> /
+									<a class="linkGray" href="/{{ Uri }}.html"> {{ Title }}</a>
+								</h3>
+							</div>
+							<div class="panel-body">
+
+								{{#AgendaItems}}
+									<div class="row">
+
+										{{#Speakers}}
+											<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 text-center" style="margin-bottom: 15px;">
+												<!--<a href="#">-->
+												<img class="img-circle img-responsive" style="max-height: 100px; margin: 0 auto;" src="{{{ PhotoUrl }}}" alt="{{ LastName }} {{ FirstName }}">
+												<!--</a>-->
+												<h4>
+													<!--<a class="linkGray" href="{{ profileUrl }}" target="_blank">{{ name }}</a>-->
+													{{ LastName }} {{ FirstName }}
+												</h4>
+												<div>
+													{{#WebSiteUrl}}
+														<a href="{{{ WebSiteUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-link" aria-hidden="true">&nbsp;</i></a>
+													{{/WebSiteUrl}}
+													{{#LinkedInUrl}}
+														<a href="{{{ LinkedInUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-linkedin-square" aria-hidden="true">&nbsp;</i></a>
+													{{/LinkedInUrl}}
+													{{#FaceBookUrl}}
+														<a href="{{{ FaceBookUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-facebook-square" aria-hidden="true">&nbsp;</i></a>
+													{{/FaceBookUrl}}
+													{{#TwitterUrl}}
+														<a href="{{{ TwitterUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-twitter-square" aria-hidden="true">&nbsp;</i></a>
+													{{/TwitterUrl}}
+													{{#YouTubeUrl}}
+														<a href="{{{ YouTubeUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-youtube-square" aria-hidden="true">&nbsp;</i></a>
+													{{/YouTubeUrl}}
+													{{#GitHubUrl}}
+														<a href="{{{ GitHubUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-github-square" aria-hidden="true">&nbsp;</i></a>
+													{{/GitHubUrl}}
+												</div>
+											</div>
+										{{/Speakers}}
+
+										<div class="col-lg-9 col-md-9 col-sm-8 col-xs-6">
+											<h3>{{ Topic.Title }}</h3>
+											<div>
+												{{{ Topic.Description }}}
+											</div>
+										</div>
+
 									</div>
-								</li>
-							{{/page.upcomingMeetups}}
-						</ul>
-						<div class="panel-footer bg-warning">
-							<a href="/meetups-list.html" class="linkGray">
-								Все наши события
-							</a>
+								{{/AgendaItems}}
+
+							</div>
+							<div class="panel-footer text-right">
+									<span class="label label-success panelFooterLabelSpan pull-left">
+										<a href="/{{ Uri }}.html" class="linkWhite">
+											<i class="fa fa-plus-circle" aria-hidden="true"></i>
+											Зарегистрироваться
+										</a>
+									</span>
+								<span class="label label-default panelFooterLabelSpan">
+										<i class="fa fa-map-marker" aria-hidden="true"></i>
+									{{ Location.Address }}
+									</span>
+								<span class="label label-warning panelFooterLabelSpan">
+										<i class="fa fa-map-marker" aria-hidden="true"></i>
+									{{ Location.Title }}
+									</span>
+								<span class="label label-info panelFooterLabelSpan">
+										<i class="fa fa-tag" aria-hidden="true"></i>
+									{{#AttendanceFee}}
+										{{ AttendanceFee }} {{ AttendanceFeeCurency }}
+									{{/AttendanceFee}}
+									{{^AttendanceFee}}
+										Бесплатно
+									{{/AttendanceFee}}
+									</span>
+							</div>
 						</div>
-					</div>
+					{{/page.upcomingMeetups}}
+
 				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="col-lg-4 cold-md-4 col-sm-4 col-xs-4 col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 text-center" style="margin-bottom: 20px; padding-bottom: 20pxl;">
+				<a href="/meetups-list.html" class="btn btn-success btn-lg" style="margin: 15px;">
+					<i class="fa fa-th-list" aria-hidden="true"></i> Все события
+				</a>
 			</div>
 		</div>
 
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<img src="https://azureday.net/Theme/img/_slides/02.jpg" alt="our speakers" class="img-responsive img-rounded" />
+					<img src="/images/azureday2017-2.jpg" alt="our speakers" class="img-responsive img-rounded" />
 					<h1 class="captionHeader" style="padding-bottom: 0; margin-bottom: 0;">
 						<span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> Сообщество архитекторов и разработчиков приложений на базе Microsoft Azure
 					</h1>
@@ -128,37 +201,73 @@
 
 		<div class="container">
 			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="indexHeading alert alert-warning">
+						<span>
+							Наши докладчики
+						</span>
+					</div>
+
+					<div class="text-justify">
+						<i class="fa fa-address-book fa-3x fa-pull-left" style="padding-left: 15px;" aria-hidden="true"></i>
+
+						<p style="margin: 15px;">
+							Если у вас есть желание поделиться с нами своей интересной историей, то мы с радостью пригласим вас стать нашим докладчиком. Мы поможем выбрать дату, найти место для проведение встречи и пригласить на неё людей.
+						</p>
+						<p style="margin: 15px;">
+							Мы всегда открыты для новых людей, наш девиз "вместе мы знаем и умеем намного больше, чем каждый из нас в отдельности".
+						</p>
+						<p style="margin: 15px;">
+							Если вы хотите выступить у нас с докладом, то напишите нам письмо на адрес <a href="mailto:speaker@msazureclub.com">speaker@msazureclub.com</a>.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
 				<!-- speakers -->
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">Актуальные докладчики</div>
-						<div class="panel-body">
-							<div>
-								<a href="/speakers.html#who-are-our-speakers" class="linkGray">
-									<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Кто такие наши докладчики?
-								</a>
-							</div>
-							<div>
-								<a href="/speakers.html#how-to-become-a-speaker" class="linkGray">
-									<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Как стать докладчиком?
-								</a>
-							</div>
-						</div>
 
-						<div class="container-fluid">
+						<div class="container-fluid" style="padding-top: 10px;">
 							{{#page.speakers}}
-								<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 text-center" style="margin-bottom: 15px;">
-									<a href="#">
-										<img class="img-circle img-responsive" src="https://pbs.twimg.com/profile_images/3722654974/718e0411759c762708edf6c2fa25065c_400x400.jpeg" alt="{{ name }}">
-									</a>
-									<h4>
-										<a class="linkGray" href="{{ profileUrl }}" target="_blank">{{ name }}</a>
-									</h4>
-									<div>
-										<a href="#" class="linkGrass"><i class="fa fa-2x fa-facebook-square" aria-hidden="true">&nbsp;</i></a>
-										<a href="#" class="linkGrass"><i class="fa fa-2x fa-twitter-square" aria-hidden="true">&nbsp;</i></a>
-										<a href="#" class="linkGrass"><i class="fa fa-2x fa-youtube-square" aria-hidden="true">&nbsp;</i></a>
-										<a href="#" class="linkGrass"><i class="fa fa-2x fa-github-square" aria-hidden="true">&nbsp;</i></a>
+								<div class="row speakerPanelsIndex">
+									<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 text-center" style="margin-bottom: 15px;">
+										<img class="img-circle img-responsive" style="max-height: 100px; margin: 0 auto;" src="{{{ PhotoUrl }}}" alt="{{ LastName }} {{ FirstName }}">
+										<h4>
+											{{ LastName }} {{ FirstName }}
+										</h4>
+										<div>
+											{{#WebSiteUrl}}
+												<a href="{{{ WebSiteUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-link" aria-hidden="true">&nbsp;</i></a>
+											{{/WebSiteUrl}}
+											{{#LinkedInUrl}}
+												<a href="{{{ LinkedInUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-linkedin-square" aria-hidden="true">&nbsp;</i></a>
+											{{/LinkedInUrl}}
+											{{#FaceBookUrl}}
+												<a href="{{{ FaceBookUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-facebook-square" aria-hidden="true">&nbsp;</i></a>
+											{{/FaceBookUrl}}
+											{{#TwitterUrl}}
+												<a href="{{{ TwitterUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-twitter-square" aria-hidden="true">&nbsp;</i></a>
+											{{/TwitterUrl}}
+											{{#YouTubeUrl}}
+												<a href="{{{ YouTubeUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-youtube-square" aria-hidden="true">&nbsp;</i></a>
+											{{/YouTubeUrl}}
+											{{#GitHubUrl}}
+												<a href="{{{ GitHubUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-github-square" aria-hidden="true">&nbsp;</i></a>
+											{{/GitHubUrl}}
+										</div>
+									</div>
+
+									<div class="col-lg-9 col-md-9 col-sm-8 col-xs-6 bg-info">
+										<h4>
+											<i class="fa fa-address-card-o" aria-hidden="true"></i>
+											О докладчике
+										</h4>
+										<div class="text-justify" style="padding-bottom: 20px;">
+											{{{ Bio }}}
+										</div>
 									</div>
 								</div>
 							{{/page.speakers}}
@@ -176,33 +285,58 @@
 
 		<div class="container">
 			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="indexHeading alert alert-warning">
+						<span>
+							Наши партнеры
+						</span>
+					</div>
+
+					<div class="text-justify">
+						<i class="fa fa-handshake-o fa-3x fa-pull-left" style="padding-left: 15px;" aria-hidden="true"></i>
+
+						<p style="margin: 15px;">
+							Если вы хотите поддержать наше сообщество - предоставить докладчика, предоставить призы для участников встреч, купить для участников наших встреч пиццу или тортик, стать информационным партнёром или поддержать нас любым другим способом, - принимайте участие в нашей партнёрской программе.
+						</p>
+						<p style="margin: 15px;">
+							Более подробно о партнёрской программе вы можете узнать, написав нам письмо на почту <a href="mailto:partner@msazureclub.com">partner@msazureclub.com</a>.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
 				<!-- partners -->
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">Наши любимые партнеры</div>
 
-						<div class="panel-body">
-							<div>
-								<a href="/partners.html#who-are-our-partners" class="linkGray">
-									<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Кто такие наши партнеры?
-								</a>
-							</div>
-							<div>
-								<a href="/partners.html#how-to-become-a-partner" class="linkGray">
-									<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Как стать партнером?
-								</a>
-							</div>
+						<!--<div class="panel-body">-->
+							<!--<div>-->
+								<!--<a href="/partners.html#who-are-our-partners" class="linkGray">-->
+									<!--<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Кто такие наши партнеры?-->
+								<!--</a>-->
+							<!--</div>-->
+							<!--<div>-->
+								<!--<a href="/partners.html#how-to-become-a-partner" class="linkGray">-->
+									<!--<span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;" aria-hidden="true"></span>Как стать партнером?-->
+								<!--</a>-->
+							<!--</div>-->
+						<!--</div>-->
+
+						<div class="container-fluid">
+							{{#page.partners}}
+								<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 text-center" style="margin-bottom: 15px;">
+									<a href="#">
+										<img class="img-responsive" src="{{{ LogoUrl }}}" alt="{{ Title }}">
+									</a>
+									<h4>
+										<a class="linkGray" href="{{ WebSiteUrl }}" target="_blank">{{ Title }}</a>
+									</h4>
+								</div>
+							{{/page.partners}}
 						</div>
 
-						<ul class="list-group">
-							{{#page.partners}}
-								<li class="list-group-item">
-									<a href="{{ webUrl }}" target="_blank" class="linkGray">
-									{{ name }}
-									</a>
-								</li>
-							{{/page.partners}}
-						</ul>
 						<div class="panel-footer">
 							<a href="/partners.html" class="linkGray">
 								Все наши партнеры

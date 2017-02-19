@@ -73,3 +73,33 @@ a.linkWhite:hover {
 .spacingForBlocks {
     padding: 15px 10px 15px 10px;
 }
+
+.speakerPanelsIndex {
+    border-bottom: 1px dashed #3c3c3c;
+   /*border-top: 1px dashed #3c3c3c;*/
+    padding-top: 15px;
+}
+
+.speakerPanelsIndex:last-of-type {
+    border-bottom:  none;
+    padding-top: 15px;
+}
+
+.indexHeading {
+    padding: 10px 0px 10px 20px;
+    margin: 0;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #449d44;
+    /*text-shadow: 0 0 5px #ccc;*/
+}
+
+.indexAllMeetupsLink {
+    padding: 0 25px 0 0;
+    color: #666;
+    text-decoration: none;
+}
+
+a.indexAllMeetupsLink:hover, a.indexAllMeetupsLink:active, a.indexAllMeetupsLink:visited {
+    color: #666;
+}
