@@ -4,9 +4,29 @@
 * Azure Storage Emulator https://azure.microsoft.com/en-us/downloads/
 * Azure Functions CLI https://www.npmjs.com/package/azure-functions-cli
 
+#### Other recomended tools
+* Azure Storage Explorer http://storageexplorer.com/
+* Azure Service Bus Explorer https://github.com/paolosalvatori/ServiceBusExplorer/releases
+
 ## Listener function
 
 Listens for appropriate messages to appear in service bus. If something interesting appears in service bus it will grab it and decompose for set of internal tasks. Those tasks will be placed to internal storage queue and processed by renderer function.
+
+#### Event format
+```json
+{
+    "action": "c" // c - created, u - updated, d - deleted
+    "entity": "meetup",
+    "entityId": "<uuid>"
+}
+```
+
+#### Initialize meetup portal
+```batch
+func run listener -c "{ action: 'init' }"
+```
+
+#### Run listener for events
 
 Each internal task will have those fields:
 - page to create/update (index, meetups-list, meetup-entity, etc.)
