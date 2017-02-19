@@ -2,7 +2,8 @@ var o = require('odata');
 var configService = require('./config-service');
 
 o().config({
-	endpoint: configService.meetupODataApiEndpoint
+	endpoint: configService.meetupODataApiEndpoint,
+	appending: [ { name: 'api_key', value: configService.masterApiKey } ]
 });
 
 var service = {};
