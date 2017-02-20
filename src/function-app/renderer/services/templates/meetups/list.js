@@ -4,8 +4,8 @@ var Promise = require('promise');
 var assetsService = require('./../../assets-service');
 var helpersService = require('./../../helpers-service');
 var dataService = require('./../../data-service');
-var appService = require('./../../app-service');
 var partialsService = require('./../_partials');
+var translationService = require('./../../translation-service');
 
 var service = {};
 
@@ -25,7 +25,7 @@ service.render = function() {
 	promises.push(partialsService.renderFooter());
 
 	var years = (function() {
-		var startYear = 2015;
+		var startYear = 2017;
 		var currentYear = (new Date()).getUTCFullYear();
 
 		var years = [];
@@ -42,6 +42,7 @@ service.render = function() {
 		var table = dataService.getTableReference(dataService.tableNames.meetups);
 		promises.push(table.expand('Location').orderBy('DateTimeBegin').filter('year(DateTimeBegin) eq ' + year).get());
 	}
+	promises.push(dataService.getTableReference(dataService.tableNames.agendaItems).expand('Topic,Speakers').get());
 
 	return Promise
 		.all(promises)
@@ -58,8 +59,20 @@ service.render = function() {
 				return { year: year  };
 			});
 
+			var agendaItems = results[4 + years.length].data;
+
 			for (var i = 0; i < years.length; i++) {
-				years[i].meetups = results[4 + i].data;
+				years[i].meetups = results[4 + i].data.map(function(meetup) {
+					var date = new Date(meetup.DateTimeBegin);
+					meetup.DateFormatted = date.getDate() + ' '
+						+ translationService.getMonthName(date.getMonth()) + ' '
+						+ date.getFullYear();
+					meetup.AgendaItems = agendaItems.filter(function (agendaItem) {
+						return agendaItem.MeetupId == meetup.Id;
+					});
+
+					return meetup;
+				});
 			}
 
 			years.reverse();

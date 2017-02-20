@@ -30,7 +30,7 @@ service.saveHtml = function(fileName, fileContent) {
 		protocol: urlData.protocol,
 		hostname: urlData.hostname,
 		port: urlData.port,
-		path: urlData.path,
+		path: urlData.path + '?api_key=' + configService.masterApiKey,
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

@@ -1,0 +1,22 @@
+{
+  "disabled": false,
+  "bindings": [
+	{
+		"name": "eventItem",
+		"type": "serviceBusTrigger",
+		"topicName": "Events",
+		"subscriptionName": "MeetupPortal",
+		"accessRights": "listen",
+		"direction": "in",
+		"queueName": "renderer",
+		"connection": "ServiceBus"
+	},
+    {
+		"name": "rendererTasks",
+		"type": "queue",
+		"direction": "out",
+		"queueName": "renderer",
+		"connection": "Storage"
+    }
+  ]
+}

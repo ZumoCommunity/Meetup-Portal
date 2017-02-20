@@ -8,14 +8,217 @@
 	<body>
 		{{> sectionHeader}}
 
-		<div class="jumbotron">
-			<h1>{{ page.meetup.Title }}</h1>
-			<p>
-				{{ page.meetup.Location.Address }}
-			</p>
+		<div class="container spacingForBlocks">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="jumbotron">
+						<h1>
+							{{ page.meetup.Title }}
+						</h1>
+						<a href="#register" class="btn btn-success btn-lg pull-right">
+							<i class="fa fa-plus-circle" aria-hidden="true"></i> Зарегистрироваться
+						</a>
+						<div>
+							<span class="boldLabelText">Адрес:</span> {{ page.meetup.Location.Address }}
+						</div>
+						<div>
+							<span class="boldLabelText">Локация:</span> <span class="label label-warning">{{ page.meetup.Location.Title }}</span>
+						</div>
+						<div>
+							<span class="boldLabelText">Дата:</span> {{ page.meetup.DateFormatted }}
+						</div>
+						<div>
+							<span class="boldLabelText">Время:</span> c {{ page.meetup.TimeStartFormatted }} до {{ page.meetup.TimeEndFormatted }}
+						</div>
+						<div>
+							<span class="boldLabelText">
+								Условия проведения:</span>
+								{{#page.meetup.AttendanceFee}}
+									{{ page.meetup.AttendanceFee }} {{ page.meetup.AttendanceFeeCurency }}
+								{{/page.meetup.AttendanceFee}}
+								{{^page.meetup.AttendanceFee}}
+									бесплатно
+								{{/page.meetup.AttendanceFee}}
+								по предварительной регистрации
+						</div>
+						<div>
+							<span class="boldLabelText">Как добраться:</span>
+						</div>
+						<div id="map" class="googleMapsSizing">
+						</div>
+						<script>
+							function initMap() {
+								var location = { lat: {{ page.meetup.Location.Latitude }}, lng: {{ page.meetup.Location.Longitude }} };
+								var map = new google.maps.Map(document.getElementById('map'), {
+									zoom: 17,
+									center: location
+								});
+								var marker = new google.maps.Marker({
+									position: location,
+									map: map
+								});
+							}
+						</script>
+						<script src="https://maps.googleapis.com/maps/api/js?key={{ page.configs.GoogleMapsApiKey }}&language=ru&region=UA&callback=initMap"></script>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="jumbotron">
-			{{{ page.form.registration }}}
+
+		<div class="container spacingForBlocks">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<h2>
+						<i class="fa fa-th-list" aria-hidden="true"></i> Программа встречи:
+					</h2>
+				</div>
+			</div>
+
+			<div style="border-bottom: 1px dashed #3c3c3c; border-top: 1px dashed #3c3c3c;">
+				{{#page.meetup.AgendaItems}}
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<h3>
+							<i class="fa fa-play" aria-hidden="true"></i>
+							{{ Topic.Title }}
+						</h3>
+						<div class="text-justify" style="padding-bottom: 20px;">
+							{{{ Topic.Description }}}
+						</div>
+					</div>
+				</div>
+				{{#Speakers}}
+					<div class="row">
+						<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 text-center" style="margin-bottom: 15px;">
+							<img class="img-circle img-responsive" style="max-height: 100px; margin: 0 auto;" src="{{{ PhotoUrl }}}" alt="{{ LastName }} {{ FirstName }}">
+							<h4>
+								{{ LastName }} {{ FirstName }}
+							</h4>
+							<div>
+								{{#WebSiteUrl}}
+									<a href="{{{ WebSiteUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-link" aria-hidden="true">&nbsp;</i></a>
+								{{/WebSiteUrl}}
+								{{#LinkedInUrl}}
+									<a href="{{{ LinkedInUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-linkedin-square" aria-hidden="true">&nbsp;</i></a>
+								{{/LinkedInUrl}}
+								{{#FaceBookUrl}}
+									<a href="{{{ FaceBookUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-facebook-square" aria-hidden="true">&nbsp;</i></a>
+								{{/FaceBookUrl}}
+								{{#TwitterUrl}}
+									<a href="{{{ TwitterUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-twitter-square" aria-hidden="true">&nbsp;</i></a>
+								{{/TwitterUrl}}
+								{{#YouTubeUrl}}
+									<a href="{{{ YouTubeUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-youtube-square" aria-hidden="true">&nbsp;</i></a>
+								{{/YouTubeUrl}}
+								{{#GitHubUrl}}
+									<a href="{{{ GitHubUrl }}}" target="_blank" class="linkGrass"><i class="fa fa-2x fa-github-square" aria-hidden="true">&nbsp;</i></a>
+								{{/GitHubUrl}}
+							</div>
+						</div>
+
+						<div class="col-lg-9 col-md-9 col-sm-8 col-xs-6 bg-info">
+							<h4>
+								<i class="fa fa-address-card-o" aria-hidden="true"></i>
+								О докладчике
+							</h4>
+							<div class="text-justify" style="padding-bottom: 20px;">
+								{{{ Bio }}}
+							</div>
+						</div>
+					</div>
+				{{/Speakers}}
+			{{/page.meetup.AgendaItems}}
+			</div>
+
+		</div>
+
+		<div class="container spacingForBlocks">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<h2>
+						<i class="fa fa-address-book" aria-hidden="true"></i> Партнеры встречи:
+					</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="container-fluid">
+
+					{{#page.meetup.Partners}}
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="margin-bottom: 15px;">
+
+							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center">
+								<a href="{{{ WebSiteUrl }}}" target="_blank">
+									<img class="img-responsive" src="{{{ LogoUrl }}}" alt="{{ Title }}">
+								</a>
+							</div>
+
+							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 text-justify">
+								<h4>
+									<a class="linkGray" href="{{{ WebSiteUrl }}}" target="_blank">{{ Title }}</a>
+								</h4>
+								<div>
+									{{{ Description }}}
+								</div>
+							</div>
+
+						</div>
+					{{/page.meetup.Partners}}
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="container bg-warning spacingForBlocks text-center">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+					<h2>
+						<i class="fa fa-calendar" aria-hidden="true"></i> {{ page.meetup.DateFormatted }} <br />
+						<i class="fa fa-clock-o" aria-hidden="true"></i> {{ page.meetup.TimeStartFormatted }} - {{ page.meetup.TimeEndFormatted }} <br />
+					</h2>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+					<h2>
+						<i class="fa fa-building-o" aria-hidden="true"></i> {{ page.meetup.Location.Title }} по адресу:<br/>
+						<i class="fa fa-map-marker" aria-hidden="true"></i> {{ page.meetup.Location.Address }}
+					</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<!--<div>-->
+					<!--<p>-->
+					<!--<span class="boldLabelText">-->
+					<!--Дополнительно о локации:-->
+					<!--</span>-->
+					<!--</p>-->
+					<!--{{ page.meetup.Location.Description }}-->
+					<!--</div>-->
+				</div>
+			</div>
+		</div>
+
+		<div class="container spacingForBlocks">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<h2>
+						Условия проведения встречи: <i class="fa fa-tag" aria-hidden="true"></i>
+						{{#page.meetup.AttendanceFee}}
+							{{ page.meetup.AttendanceFee }} {{ page.meetup.AttendanceFeeCurency }}
+						{{/page.meetup.AttendanceFee}}
+						{{^page.meetup.AttendanceFee}}
+							Бесплатно
+						{{/page.meetup.AttendanceFee}}
+						по предварительной регистрации
+					</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="container spacingForBlocks">
+			<div class="jumbotron" id="register">
+				{{{ page.form.registration }}}
+			</div>
 		</div>
 
 		{{> sectionFooter}}
