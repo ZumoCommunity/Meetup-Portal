@@ -96,7 +96,11 @@
 							<div class="panel-heading">
 								<h3 style="padding: 0 0 5px 0; margin: 0;">
 									<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-									<span class="label label-success">{{ DateFormatted }}</span> /
+									<span class="label label-success">{{ DateFormatted }}</span>
+									/
+									<!--{{#IsPartner}}-->
+										<!--[партнеры]-->
+									<!--{{/IsPartner}}-->
 									<a class="linkGray" href="/{{ Uri }}.html"> {{ Title }}</a>
 								</h3>
 							</div>
@@ -147,7 +151,7 @@
 							</div>
 							<div class="panel-footer text-right">
 									<span class="label label-success panelFooterLabelSpan pull-left">
-										<a href="/{{ Uri }}.html" class="linkWhite">
+										<a href="/{{ Uri }}.html#register" class="linkWhite">
 											<i class="fa fa-plus-circle" aria-hidden="true"></i>
 											Зарегистрироваться
 										</a>

@@ -29,7 +29,7 @@ service.render = function(meetupId) {
 	promises.push(partialsService.renderHead(assets));
 	promises.push(partialsService.renderHeader());
 	promises.push(partialsService.renderFooter());
-	promises.push(dataService.getTableReference(dataService.tableNames.agendaItems).expand('Topic,Speakers').filter('MeetupId eq ' + meetupId).get());
+	promises.push(dataService.getTableReference(dataService.tableNames.agendaItems).orderBy('OrderN').expand('Topic,Speakers').filter('MeetupId eq ' + meetupId).get());
 
 	return Promise
 		.all(promises)

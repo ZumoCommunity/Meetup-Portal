@@ -42,7 +42,7 @@ service.render = function() {
 		var table = dataService.getTableReference(dataService.tableNames.meetups);
 		promises.push(table.expand('Location').orderBy('DateTimeBegin').filter('year(DateTimeBegin) eq ' + year).get());
 	}
-	promises.push(dataService.getTableReference(dataService.tableNames.agendaItems).expand('Topic,Speakers').get());
+	promises.push(dataService.getTableReference(dataService.tableNames.agendaItems).orderBy('OrderN').expand('Topic,Speakers').get());
 
 	return Promise
 		.all(promises)
@@ -70,6 +70,7 @@ service.render = function() {
 					meetup.AgendaItems = agendaItems.filter(function (agendaItem) {
 						return agendaItem.MeetupId == meetup.Id;
 					});
+					meetup.IsPartner = meetup.MeetupOwnershipType == 3;
 
 					return meetup;
 				});
