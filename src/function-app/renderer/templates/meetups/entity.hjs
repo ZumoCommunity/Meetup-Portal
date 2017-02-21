@@ -207,7 +207,7 @@
 							{{ page.meetup.AttendanceFee }} {{ page.meetup.AttendanceFeeCurency }}
 						{{/page.meetup.AttendanceFee}}
 						{{^page.meetup.AttendanceFee}}
-							Бесплатно
+							бесплатно
 						{{/page.meetup.AttendanceFee}}
 						по предварительной регистрации
 					</h2>
