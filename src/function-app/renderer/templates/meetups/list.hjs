@@ -8,6 +8,26 @@
 <body>
 	{{> sectionHeader}}
 
+	<div id="how-to-become-a-partner" class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<h2>
+					<i class="fa fa-address-book" aria-hidden="true"></i> Все наши события
+				</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="container-fluid">
+				<p style="margin: 15px;">
+					Если у вас намечается конференция, встреча сообщества, посиделки на тему  IT или просто есть свободный зал, то мы с радостью придём к вам в гости. Мы готовы поддержать ваше мероприятие предложив вам докладчика, а также помочь с приглашением людей.
+				</p>
+				<p style="margin: 15px;">
+					Если вам интересно сотрудничество, то пишите нам на адрес <a href="mailto:partner@msazureclub.com">partner@msazureclub.com</a>.
+				</p>
+			</div>
+		</div>
+	</div>
+
 	<div class="container">
 		<div class="row">
 			<div id="years" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
