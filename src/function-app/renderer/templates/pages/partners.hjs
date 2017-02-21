@@ -8,6 +8,7 @@
 	<body>
 		{{> sectionHeader}}
 
+<!--
 		<div id="who-are-our-partners" class="container">
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -22,6 +23,7 @@
 				</div>
 			</div>
 		</div>
+-->
 
 		<div id="how-to-become-a-partner" class="container">
 			<div class="row">
@@ -33,7 +35,15 @@
 			</div>
 			<div class="row">
 				<div class="container-fluid">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec libero gravida, efficitur ligula vitae, mattis nisl. Maecenas vehicula at erat et tristique. Duis vestibulum, velit at molestie sagittis, leo leo euismod ante, sit amet ultricies tellus velit nec est. Maecenas at erat volutpat, vulputate nibh ut, bibendum est. Ut semper, arcu a rutrum tincidunt, arcu nunc gravida orci, ut maximus dolor nulla at orci. Integer euismod est nec malesuada ullamcorper. Duis cursus turpis augue, sit amet feugiat neque pulvinar blandit. Donec in pellentesque odio, nec suscipit ligula. Cras ultrices ullamcorper malesuada. Nunc ornare, nisi non bibendum aliquet, purus sapien rhoncus odio, vitae finibus ex elit a elit. Morbi malesuada accumsan nisl a pulvinar. Vivamus in tortor nunc. Integer malesuada sit amet lectus id porttitor. Integer erat justo, dapibus id dui in, ornare placerat urna.
+					<p style="margin: 15px;">
+						Если вы хотите поддержать наше сообщество - предоставить докладчика, предоставить призы для участников встреч, купить для участников наших встреч пиццу или тортик, стать информационным партнёром или поддержать нас любым другим способом, - принимайте участие в нашей партнёрской программе.
+					</p>
+					<p style="margin: 15px;">
+						Если у вас намечается конференция, встреча сообщества, посиделки на тему  IT или просто есть свободный зал, то мы с радостью придём к вам в гости. Мы готовы поддержать ваше мероприятие предложив вам докладчика, а также помочь с приглашением людей.
+					</p>
+					<p style="margin: 15px;">
+						Если вам интересно сотрудничество, то пишите нам на адрес <a href="mailto:partner@msazureclub.com">partner@msazureclub.com</a>.
+					</p>
 				</div>
 			</div>
 		</div>
