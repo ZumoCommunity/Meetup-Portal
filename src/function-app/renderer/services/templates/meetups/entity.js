@@ -72,13 +72,20 @@ service.render = function(meetupId) {
 				page: {
 					meetup: meetup,
 					form: {
-						registration: registrationFormHtml
+						registration: registrationFormHtml,
+						isRegistrationOpen: true
 					},
 					configs: {
 						GoogleMapsApiKey: configService.GoogleMapsApiKey
 					}
 				}
 			};
+
+            var dateRegistrationClosed = appService.getRegistrationCloseDateForMeetup(meetup, 12);
+
+            if (dateRegistrationClosed.getTime() > (new Date().getTime())) {
+				model.page.form.isRegistrationOpen = false;
+            }
 
 			var html = Mustache.render(template, model, partials);
 
