@@ -1,0 +1,12 @@
+{
+  "name": "timer",
+  "version": "0.0.1",
+  "main": "run.js",
+  "author": "Anton Boyko (http://msazureclub.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "nconf": "^0.8.4",
+    "odata": "^0.3.0",
+    "promise": "^7.1.1"
+  }
+}
