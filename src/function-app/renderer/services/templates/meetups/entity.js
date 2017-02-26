@@ -81,11 +81,15 @@ service.render = function(meetupId) {
 				}
 			};
 
-            var dateRegistrationClosed = appService.getRegistrationCloseDateForMeetup(meetup, 12);
-
-            if (dateRegistrationClosed.getTime() > (new Date().getTime())) {
+			var now = (new Date().getTime());
+			if (now > dateBegin.getTime()) {
 				model.page.form.isRegistrationOpen = false;
-            }
+			} else {
+				var dateRegistrationClosed = appService.getRegistrationCloseDateForMeetup(meetup, 12);
+				if (dateRegistrationClosed.getTime() < now) {
+					model.page.form.isRegistrationOpen = false;
+				}
+			}
 
 			var html = Mustache.render(template, model, partials);
 

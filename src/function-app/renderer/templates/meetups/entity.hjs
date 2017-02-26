@@ -15,16 +15,18 @@
 						<h1>
 							{{ page.meetup.Title }}
 						</h1>
-						{{#page.meetup.RegistrationUrl}}
-							<a href="{{ page.meetup.RegistrationUrl }}" target="_blank" class="btn btn-primary btn-lg pull-right">
-								Узнать больше деталей и зарегистрироваться
-							</a>
-						{{/page.meetup.RegistrationUrl}}
-						{{^page.meetup.RegistrationUrl}}
-							<a href="#register" class="btn btn-success btn-lg pull-right">
-								<i class="fa fa-plus-circle" aria-hidden="true"></i> Зарегистрироваться
-							</a>
-						{{/page.meetup.RegistrationUrl}}
+						{{#page.form.isRegistrationOpen}}
+							{{#page.meetup.RegistrationUrl}}
+								<a href="{{ page.meetup.RegistrationUrl }}" target="_blank" class="btn btn-primary btn-lg pull-right">
+									Узнать больше деталей и зарегистрироваться
+								</a>
+							{{/page.meetup.RegistrationUrl}}
+							{{^page.meetup.RegistrationUrl}}
+								<a href="#register" class="btn btn-success btn-lg pull-right">
+									<i class="fa fa-plus-circle" aria-hidden="true"></i> Зарегистрироваться
+								</a>
+							{{/page.meetup.RegistrationUrl}}
+						{{/page.form.isRegistrationOpen}}
 						<div>
 							<span class="boldLabelText">Адрес:</span> {{ page.meetup.Location.Address }}
 						</div>
@@ -223,16 +225,23 @@
 		</div>
 		<div class="container spacingForBlocks">
 			<div class="jumbotron" id="register">
-				{{#page.meetup.RegistrationUrl}}
+				{{#page.form.isRegistrationOpen}}
+					{{#page.meetup.RegistrationUrl}}
+						<div class="text-center">
+							<a href="{{ page.meetup.RegistrationUrl }}" target="_blank" class="btn btn-primary btn-lg">
+								Узнать больше деталей и зарегистрироваться
+							</a>
+						</div>
+					{{/page.meetup.RegistrationUrl}}
+					{{^page.meetup.RegistrationUrl}}
+						{{{ page.form.registration }}}
+					{{/page.meetup.RegistrationUrl}}
+				{{/page.form.isRegistrationOpen}}
+				{{^page.form.isRegistrationOpen}}
 					<div class="text-center">
-						<a href="{{ page.meetup.RegistrationUrl }}" target="_blank" class="btn btn-primary btn-lg">
-							Узнать больше деталей и зарегистрироваться
-						</a>
+						Регистрация закрыта.
 					</div>
-				{{/page.meetup.RegistrationUrl}}
-				{{^page.meetup.RegistrationUrl}}
-					{{{ page.form.registration }}}
-				{{/page.meetup.RegistrationUrl}}
+				{{/page.form.isRegistrationOpen}}
 			</div>
 		</div>
 
