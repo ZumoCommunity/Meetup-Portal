@@ -2,6 +2,8 @@
   "name": "renderer",
   "version": "0.0.1",
   "main": "renderer.js",
+  "author": "Anton Boyko (http://msazureclub.com/)",
+  "license": "MIT",
   "dependencies": {
     "html-minifier": "^3.2.3",
     "lodash": "^4.17.4",
