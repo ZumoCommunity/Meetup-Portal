@@ -1,0 +1,18 @@
+{
+  "disabled": false,
+  "bindings": [
+	{
+		"schedule": "0 0 * * * *",
+		"name": "timer",
+		"type": "timerTrigger",
+		"direction": "in"
+	},
+    {
+		"name": "rendererTasks",
+		"type": "queue",
+		"direction": "out",
+		"queueName": "renderer",
+		"connection": "Storage"
+    }
+  ]
+}

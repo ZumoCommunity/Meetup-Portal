@@ -29,7 +29,7 @@ service.render = function(meetupId) {
 	promises.push(partialsService.renderHead(assets));
 	promises.push(partialsService.renderHeader());
 	promises.push(partialsService.renderFooter());
-	promises.push(dataService.getTableReference(dataService.tableNames.agendaItems).expand('Topic,Speakers').filter('MeetupId eq ' + meetupId).get());
+	promises.push(dataService.getTableReference(dataService.tableNames.agendaItems).orderBy('OrderN').expand('Topic,Speakers').filter('MeetupId eq ' + meetupId).get());
 
 	return Promise
 		.all(promises)
@@ -72,13 +72,24 @@ service.render = function(meetupId) {
 				page: {
 					meetup: meetup,
 					form: {
-						registration: registrationFormHtml
+						registration: registrationFormHtml,
+						isRegistrationOpen: true
 					},
 					configs: {
 						GoogleMapsApiKey: configService.GoogleMapsApiKey
 					}
 				}
 			};
+
+			var now = (new Date().getTime());
+			if (now > dateBegin.getTime()) {
+				model.page.form.isRegistrationOpen = false;
+			} else {
+				var dateRegistrationClosed = appService.getRegistrationCloseDateForMeetup(meetup, 12);
+				if (dateRegistrationClosed.getTime() < now) {
+					model.page.form.isRegistrationOpen = false;
+				}
+			}
 
 			var html = Mustache.render(template, model, partials);
 

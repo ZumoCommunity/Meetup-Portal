@@ -39,6 +39,11 @@ Listener function should know the web site structure and know how each entity ty
 - { page: 'meetups-list' }
 - { page: 'meetup-entity', arguments: { meetupId: '&lt;uuid&gt;' } }
 
+
+## Timer function
+
+Runs every hour and checks for schedule-based events to be triggered.
+
 ## Renderer function
 
 Listens for tasks for rendering html pages to appear in internal storage queue.
@@ -55,6 +60,3 @@ func run renderer -c "{ page: 'meetups-list' }"
 ```batch
 func run renderer -c "{ page: 'meetup-entity', arguments: { meetupId: '<uuid>' } }"
 ```
-
-
-## Timer function

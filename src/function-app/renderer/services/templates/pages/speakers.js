@@ -21,7 +21,7 @@ service.render = function() {
 	promises.push(partialsService.renderHead(assets));
 	promises.push(partialsService.renderHeader());
 	promises.push(partialsService.renderFooter());
-	promises.push(dataService.getTableReference(dataService.tableNames.speakers).orderBy('LastName,FirstName').get());
+	promises.push(dataService.getTableReference(dataService.tableNames.speakers).filter("Email ne '3rd-party'").orderBy('LastName,FirstName').get());
 
 	return Promise
 		.all(promises)

@@ -54,4 +54,22 @@ service.getMeetupRegistrationFormHtml = function(meetupId) {
 	});
 };
 
+service.getRegistrationCloseDateForMeetup = function (meetup, hours) {
+	if (!meetup) {
+		throw 'meetup argument should not be empty';
+	}
+
+	if (!meetup.DateTimeBegin) {
+        throw 'unable to find "DateTimeBegin" property for meetup';
+	}
+
+	if (!hours || hours < 0) {
+		hours = 12;
+	}
+
+    var dateBegin = new Date(meetup.DateTimeBegin);
+    dateBegin.setHours(dateBegin.getHours() - hours);
+    return dateBegin;
+};
+
 module.exports = service;

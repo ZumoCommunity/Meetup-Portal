@@ -18,13 +18,17 @@ service.render = function() {
 
 	var promises = [];
 
+	var dateBegin = new Date();
+	var dateEnd = new Date();
+	dateEnd.setDate(dateBegin.getDate() + 90);
+
 	promises.push(helpersService.readLocalFile('templates/index.hjs'));
 	promises.push(partialsService.renderHead(assets));
 	promises.push(partialsService.renderHeader());
 	promises.push(partialsService.renderFooter());
-	promises.push(dataService.getTableReference(dataService.tableNames.meetups).expand('Location').orderBy('DateTimeBegin').filter('DateTimeBegin ge ' + (new Date()).toISOString()).get());
-	promises.push(dataService.getTableReference(dataService.tableNames.partners).orderBy('Title').get());
-	promises.push(dataService.getTableReference(dataService.tableNames.agendaItems).expand('Topic,Speakers').orderBy('Meetup/DateTimeBegin').filter('Meetup/DateTimeBegin ge ' + (new Date()).toISOString()).get());
+	promises.push(dataService.getTableReference(dataService.tableNames.meetups).expand('Location').orderBy('DateTimeBegin').filter('DateTimeBegin ge ' + dateBegin.toISOString() + ' and DateTimeEnd le ' + dateEnd.toISOString()).get());
+	promises.push(dataService.getTableReference(dataService.tableNames.partners).filter('IsFeatured eq true').orderBy('Title').get());
+	promises.push(dataService.getTableReference(dataService.tableNames.agendaItems).expand('Topic,Speakers').orderBy('Meetup/DateTimeBegin,OrderN').filter('Meetup/DateTimeBegin ge ' + dateBegin.toISOString() + ' and Meetup/DateTimeEnd le ' + dateEnd.toISOString()).get());
 
 	return Promise
 		.all(promises)
@@ -42,6 +46,7 @@ service.render = function() {
 				meetup.DateFormatted = date.getDate() + ' '
 					+ translationService.getMonthName(date.getMonth()) + ' '
 					+ date.getFullYear();
+				meetup.IsPartner = meetup.MeetupOwnershipType == 3;
 
 				return meetup;
 			});
@@ -59,6 +64,10 @@ service.render = function() {
 
 			var speakers = agendaItems.reduce(function(speakersArray, agendaItem) {
 				for (var i = 0; i < agendaItem.Speakers.length; i++) {
+					if (agendaItem.Speakers[i].Email == '3rd-party') {
+						continue;
+					}
+
 					var isSpeakerExists = speakersArray.filter(function (speaker) {
 						return speaker.Id == agendaItem.Speakers[i].Id;
 					}).length != 0;
