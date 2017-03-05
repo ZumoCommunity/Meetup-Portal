@@ -8,7 +8,6 @@
 		"subscriptionName": "MeetupPortal",
 		"accessRights": "listen",
 		"direction": "in",
-		"queueName": "renderer",
 		"connection": "ServiceBus"
 	},
     {
