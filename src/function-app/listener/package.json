@@ -5,6 +5,7 @@
   "author": "Anton Boyko (http://msazureclub.com/)",
   "license": "MIT",
   "dependencies": {
+    "applicationinsights": "^0.18.0",
     "nconf": "^0.8.4",
     "odata": "^0.3.0",
     "promise": "^7.1.1"

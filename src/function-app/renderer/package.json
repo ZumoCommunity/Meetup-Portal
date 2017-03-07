@@ -5,6 +5,7 @@
   "author": "Anton Boyko (http://msazureclub.com/)",
   "license": "MIT",
   "dependencies": {
+    "applicationinsights": "^0.18.0",
     "html-minifier": "^3.2.3",
     "lodash": "^4.17.4",
     "mustache": "^2.3.0",

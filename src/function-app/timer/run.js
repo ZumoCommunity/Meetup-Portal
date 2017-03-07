@@ -1,10 +1,12 @@
-var Promise = require('promise');
+var loggingService = require('./services/logging-service');
 
 var configService = require('./services/config-service');
 var dataService = require('./services/data-service');
 var taskService = require('./services/task-service');
 
 module.exports = function (context, timer) {
+	loggingService.trackEvent("timer receives item", timer);
+
 	var registrationCloseThreshold = 12;
 
 	var dateFrom = new Date();

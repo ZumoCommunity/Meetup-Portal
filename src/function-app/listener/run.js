@@ -1,8 +1,11 @@
+var loggingService = require('./services/logging-service');
+
 var taskService = require('./services/task-service');
 var dataService = require('./services/data-service');
 var Promise = require('promise');
 
 module.exports = function (context, eventItem) {
+	loggingService.trackEvent("listener receives item", eventItem);
 	if (eventItem.action == 'init') {
 		var promises = [];
 		promises.push(dataService.getTableReference(dataService.tableNames.meetups).select('Id').get());

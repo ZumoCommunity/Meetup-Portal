@@ -17,5 +17,6 @@ service.meetupODataApiEndpoint = nconf.get('MeetupODataApiEndpoint')|| nconf.get
 service.applicationApiEndpoint = nconf.get('ApplicationApiEndpoint')|| nconf.get('Values').ApplicationApiEndpoint;
 service.timeZone = parseInt(nconf.get('TimeZone')|| nconf.get('Values').TimeZone);
 service.GoogleMapsApiKey = nconf.get('GoogleMapsApiKey')|| nconf.get('Values').GoogleMapsApiKey;
+service.appInsightInstrumentationKey = nconf.get('AppInsightInstrumentationKey')|| nconf.get('Values').AppInsightInstrumentationKey;
 
 module.exports = service;
