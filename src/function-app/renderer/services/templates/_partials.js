@@ -2,6 +2,7 @@ var Mustache = require('mustache');
 var Promise = require('promise');
 
 var helpersService = require('./../helpers-service');
+var configService = require('./../config-service');
 
 var service = {};
 
@@ -16,7 +17,8 @@ service.renderHead = function(assets) {
 			var template = results[0];
 
 			var model = {
-				assets: assets || {}
+				assets: assets || {},
+				instrumentationKey: configService.appInsightInstrumentationKey
 			};
 
 			var html = Mustache.render(template, model);
