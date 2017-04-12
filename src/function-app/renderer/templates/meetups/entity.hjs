@@ -77,6 +77,14 @@
 		<div class="container spacingForBlocks">
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="text-justify" style="text-indent: 25px;">
+						{{{ page.meetup.Description }}}
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<h2>
 						<i class="fa fa-th-list" aria-hidden="true"></i> Программа встречи:
 					</h2>
