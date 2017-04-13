@@ -86,7 +86,7 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<h2>
-						<i class="fa fa-th-list" aria-hidden="true"></i> Программа встречи:
+						<i class="fa fa-th-list" aria-hidden="true"></i> Программа:
 					</h2>
 				</div>
 			</div>
@@ -153,7 +153,7 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<h2>
-						<i class="fa fa-address-book" aria-hidden="true"></i> Партнеры встречи:
+						<i class="fa fa-address-book" aria-hidden="true"></i> Партнеры:
 					</h2>
 				</div>
 			</div>
@@ -219,7 +219,7 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<h2>
-						Условия проведения встречи: <i class="fa fa-tag" aria-hidden="true"></i>
+						Условия проведения: <i class="fa fa-tag" aria-hidden="true"></i>
 						{{#page.meetup.AttendanceFee}}
 							{{ page.meetup.AttendanceFee }} {{ page.meetup.AttendanceFeeCurency }}
 						{{/page.meetup.AttendanceFee}}
